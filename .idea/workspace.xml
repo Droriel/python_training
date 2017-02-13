@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a2fea22-3220-4a78-aa6c-8e3f118c42b1" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/contact.py" afterPath="$PROJECT_DIR$/contact.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_add_contact.py" afterPath="$PROJECT_DIR$/test_add_contact.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,7 +51,7 @@
       <file leaf-file-name="test_add_group.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_add_group.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
+            <state relative-caret-position="1156">
               <caret line="68" column="59" lean-forward="true" selection-start-line="68" selection-start-column="59" selection-end-line="68" selection-end-column="59" />
               <folding>
                 <element signature="e#24#82#0" expanded="true" />
@@ -62,11 +63,9 @@
       <file leaf-file-name="test_add_contact.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_add_contact.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-              <folding>
-                <element signature="e#24#82#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="3" column="61" lean-forward="false" selection-start-line="3" selection-start-column="61" selection-end-line="3" selection-end-column="61" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -74,8 +73,8 @@
       <file leaf-file-name="contact.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/contact.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state relative-caret-position="595">
+              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -110,7 +109,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="8" />
     <option name="y" value="11" />
-    <option name="width" value="1400" />
+    <option name="width" value="1401" />
     <option name="height" value="1000" />
   </component>
   <component name="ProjectView">
@@ -150,7 +149,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/Atlassian/SourceTree/git_local/bin/git.exe" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
-  <component name="RunManager" selected="Python tests.py.test in test_add_contact">
+  <component name="RunManager" selected="Python tests.py.test in test_add_contact.py">
     <configuration default="false" name="py.test in test_add_contact" type="tests" factoryName="py.test" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -414,10 +413,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.py.test in test_add_contact" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.py.test in test_add_contact.py" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.py.test in test_add_contact and test_add_contact_with_empty_addresses_phones" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.py.test in test_add_contact and test_add_contact" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.py.test in test_add_contact.py" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.py.test in test_add_contact and test_add_contact" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.py.test in test_add_contact" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.py.test in test_add_contact and test_add_contact_with_empty_addresses_phones" />
         <item index="4" class="java.lang.String" itemvalue="Python tests.py.test in test_add_contact and test_add_empty_contact" />
       </list>
     </recent_temporary>
@@ -439,9 +438,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="py_test_in_test_add_contact - 2017.02.13 at 22h 20m 17s.xml">
-      <configuration name="py.test in test_add_contact" configurationId="tests" />
-    </history-entry>
     <history-entry file="py_test_in_test_add_contact - 2017.02.13 at 22h 30m 00s.xml">
       <configuration name="py.test in test_add_contact" configurationId="tests" />
     </history-entry>
@@ -457,24 +453,27 @@
     <history-entry file="py_test_in_test_add_contact_and_test_add_contact - 2017.02.13 at 22h 23m 20s.xml">
       <configuration name="py.test in test_add_contact and test_add_contact" configurationId="tests" />
     </history-entry>
+    <history-entry file="py_test_in_test_add_contact_and_test_add_contact - 2017.02.13 at 23h 15m 33s.xml">
+      <configuration name="py.test in test_add_contact and test_add_contact" configurationId="tests" />
+    </history-entry>
     <history-entry file="py_test_in_test_add_contact_and_test_add_contact_with_empty_addresses_phones - 2017.02.13 at 22h 24m 09s.xml">
       <configuration name="py.test in test_add_contact and test_add_contact_with_empty_addresses_phones" configurationId="tests" />
     </history-entry>
     <history-entry file="py_test_in_test_add_contact_and_test_add_contact_with_empty_addresses_phones - 2017.02.13 at 22h 36m 11s.xml">
       <configuration name="py.test in test_add_contact and test_add_contact_with_empty_addresses_phones" configurationId="tests" />
     </history-entry>
-    <history-entry file="py_test_in_test_add_contact_py - 2017.02.13 at 22h 14m 30s.xml">
+    <history-entry file="py_test_in_test_add_contact_py - 2017.02.13 at 22h 37m 05s.xml">
       <configuration name="py.test in test_add_contact.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="py_test_in_test_add_contact_py - 2017.02.13 at 22h 37m 05s.xml">
+    <history-entry file="py_test_in_test_add_contact_py - 2017.02.13 at 23h 16m 24s.xml">
       <configuration name="py.test in test_add_contact.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="8" y="11" width="1400" height="1000" extended-state="0" />
+    <frame x="8" y="11" width="1401" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981949" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -535,17 +534,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/contact.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_add_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
+        <state relative-caret-position="1156">
           <caret line="68" column="59" lean-forward="true" selection-start-line="68" selection-start-column="59" selection-end-line="68" selection-end-column="59" />
           <folding>
             <element signature="e#24#82#0" expanded="true" />
@@ -553,13 +544,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/contact.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test_add_contact.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-          <folding>
-            <element signature="e#24#82#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="3" column="61" lean-forward="false" selection-start-line="3" selection-start-column="61" selection-end-line="3" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>

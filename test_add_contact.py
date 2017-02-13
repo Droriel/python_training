@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
 import unittest
-from contact import PersonalData, PhoneNumbers, Emails, Wwww, BirthDate, AnniversaryDate, AdditionalData, Notes
+from contact import PersonalData, PhoneNumbers, Emails, Wwww, AdditionalData, Notes
 
 
 def is_alert_present(wd):
@@ -29,8 +29,8 @@ class test_add_contact(unittest.TestCase):
         self.fill_emails(wd, Emails(email1="test1@test.pl", email2="test2@test.pl", email3="test3@test.pl"))
         self.fill_www_address(wd, Wwww(www="www.test.pl"))
         # For dates parameters are day, month written in number, year str - number with""
-        self.fill_birth_date(wd, BirthDate(day=28, month=2, year="2010"))
-        self.fill_anniversary_date(wd, AnniversaryDate(day=31, month=12, year="2010"))
+        self.fill_birth_date(wd, day=28, month=2, year="2010")
+        self.fill_anniversary_date(wd, day=31, month=12, year="2010")
         self.fill_additonal_data(wd, AdditionalData(address="ul. Ulica 1/1 \nMiasto 00-111", phone="888888888"))
         self.fill_notes(wd, Notes(notes="To są uwagi."))
         self.submit_contact(wd)
@@ -47,8 +47,8 @@ class test_add_contact(unittest.TestCase):
         self.fill_emails(wd, Emails(email1="", email2="", email3=""))
         self.fill_www_address(wd, Wwww(www=""))
         # For dates parameters are day, month written in number, year str - number with""
-        self.fill_birth_date(wd, BirthDate(day=-1, month=0, year=""))
-        self.fill_anniversary_date(wd, AnniversaryDate(day=-1, month=0, year=""))
+        self.fill_birth_date(wd, day=-1, month=0, year="")
+        self.fill_anniversary_date(wd, day=-1, month=0, year="")
         self.fill_additonal_data(wd, AdditionalData(address="", phone=""))
         self.fill_notes(wd, Notes(notes=""))
         self.submit_contact(wd)
@@ -66,8 +66,8 @@ class test_add_contact(unittest.TestCase):
         self.fill_emails(wd, Emails(email1="", email2="", email3=""))
         self.fill_www_address(wd, Wwww(www=""))
         # For dates parameters are day, month written in number, year str - number with""
-        self.fill_birth_date(wd, BirthDate(day=1, month=1, year="1990"))
-        self.fill_anniversary_date(wd, AnniversaryDate(day=31, month=12, year="2012"))
+        self.fill_birth_date(wd, day=1, month=1, year="1990")
+        self.fill_anniversary_date(wd, day=31, month=12, year="2012")
         self.fill_additonal_data(wd, AdditionalData(address="", phone=""))
         self.fill_notes(wd, Notes(notes="To są uwagi. Nowe uwagi."))
         self.submit_contact(wd)
@@ -95,36 +95,29 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("phone2").clear()
         wd.find_element_by_name("phone2").send_keys(additionalData.phone)
 
-    def fill_anniversary_date(self, wd, anniversaryDate):
+    def fill_anniversary_date(self, wd, day, month, year):
         # Choose in day
-        if not wd.find_element_by_xpath(
-                        "//div[@id='content']/form/select[3]//option[%s]" % str(anniversaryDate.day+2)).is_selected():
-            wd.find_element_by_xpath(
-                        "//div[@id='content']/form/select[3]//option[%s]" % str(anniversaryDate.day+2)).click()
+        if not wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[%s]" % str(day+2)).is_selected():
+            wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[%s]" % str(day+2)).click()
         # Choose in month
-        if not wd.find_element_by_xpath(
-                        "//div[@id='content']/form/select[4]//option[%s]" % str(anniversaryDate.month+1)).is_selected():
-            wd.find_element_by_xpath(
-                        "//div[@id='content']/form/select[4]//option[%s]" % str(anniversaryDate.month+1)).click()
+        if not wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[%s]" % str(month+1)).is_selected():
+            wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[%s]" % str(month+1)).click()
         # Fill in year
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
-        wd.find_element_by_name("ayear").send_keys(anniversaryDate.year)
+        wd.find_element_by_name("ayear").send_keys(year)
 
-    def fill_birth_date(self, wd, birthDate):
+    def fill_birth_date(self, wd, day, month, year):
         # Choose in day
-        if not wd.find_element_by_xpath(
-                        "//div[@id='content']/form/select[1]//option[%s]" % str(birthDate.day+2)).is_selected():
-            wd.find_element_by_xpath(
-                        "//div[@id='content']/form/select[1]//option[%s]" % str(birthDate.day+2)).click()
+        if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[%s]" % str(day+2)).is_selected():
+            wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[%s]" % str(day+2)).click()
         # Choose in month
-        if not wd.find_element_by_xpath(
-                        "//div[@id='content']/form/select[2]//option[%s]" % str(birthDate.month+1)).is_selected():
-            wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[%s]" % str(birthDate.month+1)).click()
+        if not wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[%s]" % str(month+1)).is_selected():
+            wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[%s]" % str(month+1)).click()
         # Fill in year
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys(birthDate.year)
+        wd.find_element_by_name("byear").send_keys(year)
 
     def fill_www_address(self, wd, www):
         wd.find_element_by_name("homepage").click()

@@ -33,22 +33,6 @@ class Wwww:
         self.www = www
 
 
-class BirthDate:
-
-    def __init__(self, day, month, year):
-        self.day = day
-        self.month = month
-        self.year = year
-
-
-class AnniversaryDate:
-
-    def __init__(self, day, month, year):
-        self.day = day
-        self.month = month
-        self.year = year
-
-
 class AdditionalData:
 
     def __init__(self, address, phone):
