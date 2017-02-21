@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import pytest
-from contact import PersonalData, PhoneNumbers, Emails, Wwww, AdditionalData, Notes
-from application import Application
+
+from fixture.application import Application
+from model.contact import PersonalData, PhoneNumbers, Emails, Wwww, AdditionalData, Notes
 
 
 @pytest.fixture
