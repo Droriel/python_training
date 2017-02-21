@@ -13,7 +13,7 @@ def app(request):
 
 
 def test_add_contact(app):
-    app.login(username="admin", password="secret")
+    app.session.login(username="admin", password="secret")
     app.init_new_contact()
     app.fill_personal_data(PersonalData(firstname="Imię", middlename="Drugie", lastname="Nazwisko2",
                                                  nickname="Nick",title="tytuł", company="Firma", address="Adres"))
@@ -27,11 +27,11 @@ def test_add_contact(app):
     app.fill_additonal_data(AdditionalData(address="ul. Ulica 1/1 \nMiasto 00-111", phone="888888888"))
     app.fill_notes(Notes(notes="To są uwagi."))
     app.submit_contact()
-    app.logout()
+    app.session.logout()
 
 
 def test_add_empty_contact(app):
-    app.login(username="admin", password="secret")
+    app.session.login(username="admin", password="secret")
     app.init_new_contact()
     app.fill_personal_data(PersonalData(firstname="", middlename="", lastname="", nickname="",
                            title="", company="", address=""))
@@ -44,11 +44,11 @@ def test_add_empty_contact(app):
     app.fill_additonal_data(AdditionalData(address="", phone=""))
     app.fill_notes(Notes(notes=""))
     app.submit_contact()
-    app.logout()
+    app.session.logout()
 
 
 def test_add_contact_with_empty_addresses_phones(app):
-    app.login(username="admin", password="secret")
+    app.session.login(username="admin", password="secret")
     app.init_new_contact()
     app.fill_personal_data(PersonalData(firstname="Anna", middlename="Janina", lastname="Kowalska",
                                                  nickname="Anka",
@@ -62,5 +62,5 @@ def test_add_contact_with_empty_addresses_phones(app):
     app.fill_additonal_data(AdditionalData(address="", phone=""))
     app.fill_notes(Notes(notes="To są uwagi. Nowe uwagi."))
     app.submit_contact()
-    app.logout()
+    app.session.logout()
 
