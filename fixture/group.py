@@ -33,13 +33,22 @@ class  GroupHelper:
         wd.find_element_by_link_text("group page").click()
 
     # deleting first group on the list
-    def delete_first_group(self):
+    def delete_first_group_top_button(self):
         wd = self.app.wd
         self.open_groups_page()
         # select first group
         wd.find_element_by_name("selected[]").click()
         # submit deletion
-        wd.find_element_by_name("delete").click()
+        wd.find_element_by_xpath("(//input[@name='delete'])[1]").click()
+        self.return_to_groups_page()
+
+    def delete_first_group_bottom_button(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        # select first group
+        wd.find_element_by_name("selected[]").click()
+        # submit deletion
+        wd.find_element_by_xpath("(//input[@name='delete'])[2]").click()
         self.return_to_groups_page()
 
     def edit_first_top_edit(self, group):
