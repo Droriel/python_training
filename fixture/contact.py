@@ -142,3 +142,29 @@ class  ContactHelper:
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         # closing alert window
         wd.switch_to_alert().accept()
+
+    def delete_all_contacts(self):
+        wd = self.app.wd
+        # Choose all contacts
+        # //form[@name='MainForm']/input[2]
+        wd.find_element_by_xpath("//input[@id='MassCB']").click()
+        # Submit contact deletation
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        # closing alert window
+        wd.switch_to_alert().accept()
+
+    def init_first_contact_edition(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//img[@title='Edytuj']").click()
+
+    def update_contact_top(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//input[@value='Aktualizuj'][1]").click()
+
+    def update_contact_bottom(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//input[@value='Aktualizuj'][2]").click()
+
+    def delete_edited_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//input[@value='Usuń']").click()
