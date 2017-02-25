@@ -32,31 +32,35 @@ class  GroupHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("group page").click()
 
-    # deleting first group on the list
-    def delete_first_group_top_button(self):
+    # deleting first group on the list with bottom or top button
+    def delete_first_group(self, delete_button):
         wd = self.app.wd
         self.open_groups_page()
-        # select first group
-        wd.find_element_by_name("selected[]").click()
+        self.select_first_group()
         # submit deletion
-        wd.find_element_by_xpath("(//input[@name='delete'])[1]").click()
+        if delete_button == 'top':
+            wd.find_element_by_xpath("(//input[@name='delete'])[1]").click()
+        elif delete_button == 'bottom':
+            wd.find_element_by_xpath("(//input[@name='delete'])[2]").click()
+        else:
+            print("Improper parameter for delete button value")
         self.return_to_groups_page()
 
-    def delete_first_group_bottom_button(self):
+    def select_first_group(self):
         wd = self.app.wd
-        self.open_groups_page()
-        # select first group
         wd.find_element_by_name("selected[]").click()
-        # submit deletion
-        wd.find_element_by_xpath("(//input[@name='delete'])[2]").click()
-        self.return_to_groups_page()
 
-    def edit_first_top_edit(self, group):
+    def edit_first_edit(self, group, edit_button):
         wd = self.app.wd
         self.open_groups_page()
+        self.select_first_group()
         # Init first group_edition
-        wd.find_element_by_xpath("//input[@name='selected[]']").click()
-        wd.find_element_by_xpath("(//input[@name='edit'])[1]").click()
+        if edit_button == 'top':
+            wd.find_element_by_xpath("(//input[@name='edit'])[1]").click()
+        elif edit_button == 'bottom':
+            wd.find_element_by_xpath("(//input[@name='edit'])[2]").click()
+        else:
+            print("Improper parameter for edit button value")
         # Change group form
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
