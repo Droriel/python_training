@@ -14,19 +14,23 @@ class  GroupHelper:
         self.open_groups_page()
         # Init group creation
         wd.find_element_by_name("new").click()
-        # Fill group form
-        wd.find_element_by_name("group_name").click()
-        wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys(group.name)
-        wd.find_element_by_name("group_header").click()
-        wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys(group.header)
-        wd.find_element_by_name("group_footer").click()
-        wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys(group.footer)
+        self.fill_group_form(group)
         # Submit group creation
         wd.find_element_by_name("submit").click()
         self.return_to_groups_page()
+
+    def fill_group_form(self, group):
+        wd = self.app.wd
+        self.change_field_value("group_name", group.name)
+        self.change_field_value("group_header", group.header)
+        self.change_field_value("group_footer", group.footer)
+
+    def change_field_value(self, field_name, text):
+        if text is not None:
+            wd = self.app.wd
+            wd.find_element_by_name(field_name).click()
+            wd.find_element_by_name(field_name).clear()
+            wd.find_element_by_name(field_name).send_keys(text)
 
     def return_to_groups_page(self):
         wd = self.app.wd
@@ -50,7 +54,7 @@ class  GroupHelper:
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
 
-    def edit_first_edit(self, group, edit_button):
+    def edit_first_group(self, new_group_data, edit_button):
         wd = self.app.wd
         self.open_groups_page()
         self.select_first_group()
@@ -62,35 +66,10 @@ class  GroupHelper:
         else:
             print("Improper parameter for edit button value")
         # Change group form
-        wd.find_element_by_name("group_name").click()
-        wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys(group.name)
-        wd.find_element_by_name("group_header").click()
-        wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys(group.header)
-        wd.find_element_by_name("group_footer").click()
-        wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys(group.footer)
+        self.fill_group_form(new_group_data)
         # Submit group edition
-        wd.find_element_by_xpath("//input[@name='update']").click()
+        wd.find_element_by_name("update").click()
         self.return_to_groups_page()
 
-    def edit_first_bottom_edit(self, group):
-        wd = self.app.wd
-        self.open_groups_page()
-        # Init first group_edition
-        wd.find_element_by_xpath("//input[@name='selected[]']").click()
-        wd.find_element_by_xpath("(//input[@name='edit'])[2]").click()
-        # Change group form
-        wd.find_element_by_name("group_name").click()
-        wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys(group.name)
-        wd.find_element_by_name("group_header").click()
-        wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys(group.header)
-        wd.find_element_by_name("group_footer").click()
-        wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys(group.footer)
-        # Submit group edition
-        wd.find_element_by_xpath("//input[@name='update']").click()
-        self.return_to_groups_page()
+
+
