@@ -1,6 +1,6 @@
 class PersonalData:
 
-    def __init__(self, firstname, middlename, lastname, nickname, title, company, address):
+    def __init__(self, firstname=None, middlename=None, lastname=None, nickname=None, title=None, company=None, address=None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
@@ -12,7 +12,7 @@ class PersonalData:
 
 class PhoneNumbers:
 
-    def __init__(self, home, mobile, work, fax):
+    def __init__(self, home=None, mobile=None, work=None, fax=None):
         self.home = home
         self.mobile = mobile
         self.work = work
@@ -21,7 +21,7 @@ class PhoneNumbers:
 
 class Emails:
 
-    def __init__(self, email1, email2, email3):
+    def __init__(self, email1=None, email2=None, email3=None):
         self.email1 = email1
         self.email2 = email2
         self.email3 = email3
@@ -29,20 +29,20 @@ class Emails:
 
 class Wwww:
 
-    def __init__(self, www):
+    def __init__(self, www=None):
         self.www = www
 
 
 class AdditionalData:
 
-    def __init__(self, address, phone):
+    def __init__(self, address=None, phone=None):
         self.address = address
         self.phone = phone
 
 
 class Notes:
 
-    def __init__(self, notes):
+    def __init__(self, notes=None):
         self.notes = notes
 
 

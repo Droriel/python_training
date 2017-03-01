@@ -21,3 +21,8 @@ class Application:
     def destroy(self):
         self.wd.quit()
 
+    def change_field_value(self, field_name, text):
+        if text is not None:
+            self.wd.find_element_by_name(field_name).click()
+            self.wd.find_element_by_name(field_name).clear()
+            self.wd.find_element_by_name(field_name).send_keys(text)
