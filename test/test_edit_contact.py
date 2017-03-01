@@ -3,7 +3,6 @@ from model.contact import PersonalData, PhoneNumbers, Emails, Wwww, AdditionalDa
 
 
 def test_edit_first_contact_top_upadate(app):
-    app.session.login(username="admin", password="secret")
     app.contact.init_first_contact_edition()
     app.contact.fill_personal_data(PersonalData(firstname="ImięInne", middlename="DrugieInne", lastname="NazwiskoInne",
                                                 nickname="NickInny", title="tytułInny", company="FirmaInna", address="AdresInny"))
@@ -17,11 +16,9 @@ def test_edit_first_contact_top_upadate(app):
     app.contact.fill_additional_data(AdditionalData(address="ul. Inna 1/1 \nMiasto Inne 09-911", phone="1111111111"))
     app.contact.fill_notes(Notes(notes="To są  Zmienione uwagi."))
     app.contact.update_contact_top()
-    app.session.logout()
 
 
 def test_edit_first_contact_bottom_upadate(app):
-    app.session.login(username="admin", password="secret")
     app.contact.init_first_contact_edition()
     app.contact.fill_personal_data(PersonalData(firstname="ImięInne2", middlename="DrugieInne2", lastname="NazwiskoInne2",
                                                 nickname="NickInny2", title="tytułInny2", company="FirmaInna2", address="AdresInny2"))
@@ -35,11 +32,9 @@ def test_edit_first_contact_bottom_upadate(app):
     app.contact.fill_additional_data(AdditionalData(address="ul. Inna 21/1 \nMiasto Inne 29-911", phone="1111111112"))
     app.contact.fill_notes(Notes(notes="To są  Zmienione uwagi. 2"))
     app.contact.update_contact_bottom()
-    app.session.logout()
 
 
-def test_edit_First_contact_partial(app):
-    app.session.login(username="admin", password="secret")
+def test_edit_first_contact_partial(app):
     app.contact.init_first_contact_edition()
     app.contact.fill_personal_data(PersonalData(lastname="NazwiskoInne3",
                                                 nickname="NickInny3"))
@@ -52,4 +47,3 @@ def test_edit_First_contact_partial(app):
     app.contact.fill_additional_data(AdditionalData(phone="1111111113"))
     app.contact.fill_notes(Notes(notes="To są  Zmienione uwagi. 3"))
     app.contact.update_contact_bottom()
-    app.session.logout()

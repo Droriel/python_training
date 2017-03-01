@@ -5,6 +5,10 @@ class  ContactHelper:
         self.app = app
 
 # additional methods -adding contact
+    def open_main_page(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//a[contains(.,'strona główna')]").click()
+
     def submit_contact(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
@@ -83,6 +87,7 @@ class  ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
+        self.open_main_page()
         # Choose first contact
         wd.find_element_by_name("selected[]").click()
         # Submit contact deletation
@@ -92,6 +97,7 @@ class  ContactHelper:
 
     def delete_all_contacts(self):
         wd = self.app.wd
+        self.open_main_page()
         # Choose all contacts
         # //form[@name='MainForm']/input[2]
         wd.find_element_by_xpath("//input[@id='MassCB']").click()
@@ -102,6 +108,7 @@ class  ContactHelper:
 
     def init_first_contact_edition(self):
         wd = self.app.wd
+        self.open_main_page()
         wd.find_element_by_xpath("//img[@title='Edytuj']").click()
 
     def update_contact_top(self):

@@ -3,7 +3,6 @@ from model.contact import PersonalData, PhoneNumbers, Emails, Wwww, AdditionalDa
 
 
 def test_add_contact(app):
-    app.session.login(username="admin", password="secret")
     app.contact.init_new_contact()
     app.contact.fill_personal_data(PersonalData(firstname="Imię", middlename="Drugie", lastname="Nazwisko2",
                                                  nickname="Nick",title="tytuł", company="Firma", address="Adres"))
@@ -17,11 +16,9 @@ def test_add_contact(app):
     app.contact.fill_additional_data(AdditionalData(address="ul. Ulica 1/1 \nMiasto 00-111", phone="888888888"))
     app.contact.fill_notes(Notes(notes="To są uwagi."))
     app.contact.submit_contact()
-    app.session.logout()
 
 
 def test_add_empty_contact(app):
-    app.session.login(username="admin", password="secret")
     app.contact.init_new_contact()
     app.contact.fill_personal_data(PersonalData(firstname="", middlename="", lastname="", nickname="",
                            title="", company="", address=""))
@@ -34,11 +31,9 @@ def test_add_empty_contact(app):
     app.contact.fill_additional_data(AdditionalData(address="", phone=""))
     app.contact.fill_notes(Notes(notes=""))
     app.contact.submit_contact()
-    app.session.logout()
 
 
 def test_add_contact_with_empty_addresses_phones(app):
-    app.session.login(username="admin", password="secret")
     app.contact.init_new_contact()
     app.contact.fill_personal_data(PersonalData(firstname="Anna", middlename="Janina", lastname="Kowalska",
                                                  nickname="Anka",
@@ -52,5 +47,4 @@ def test_add_contact_with_empty_addresses_phones(app):
     app.contact.fill_additional_data(AdditionalData(address="", phone=""))
     app.contact.fill_notes(Notes(notes="To są uwagi. Nowe uwagi."))
     app.contact.submit_contact()
-    app.session.logout()
 
