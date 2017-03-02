@@ -33,3 +33,5 @@ class Application:
             self.wd.find_element_by_name(field_name).click()
             self.wd.find_element_by_name(field_name).clear()
             self.wd.find_element_by_name(field_name).send_keys(text)
+
+

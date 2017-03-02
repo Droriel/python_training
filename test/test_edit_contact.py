@@ -3,6 +3,10 @@ from model.contact import PersonalData, PhoneNumbers, Emails, Wwww, AdditionalDa
 
 
 def test_edit_first_contact_top_upadate(app):
+    if app.contact.count() == 0:
+        app.contact.init_new_contact()
+        app.contact.fill_personal_data(PersonalData(firstname="test"))
+        app.contact.submit_contact()
     app.contact.init_first_contact_edition()
     app.contact.fill_personal_data(PersonalData(firstname="ImięInne", middlename="DrugieInne", lastname="NazwiskoInne",
                                                 nickname="NickInny", title="tytułInny", company="FirmaInna", address="AdresInny"))
@@ -19,6 +23,10 @@ def test_edit_first_contact_top_upadate(app):
 
 
 def test_edit_first_contact_bottom_upadate(app):
+    if app.contact.count() == 0:
+        app.contact.init_new_contact()
+        app.contact.fill_personal_data(PersonalData(firstname="test"))
+        app.contact.submit_contact()
     app.contact.init_first_contact_edition()
     app.contact.fill_personal_data(PersonalData(firstname="ImięInne2", middlename="DrugieInne2", lastname="NazwiskoInne2",
                                                 nickname="NickInny2", title="tytułInny2", company="FirmaInna2", address="AdresInny2"))
@@ -35,6 +43,10 @@ def test_edit_first_contact_bottom_upadate(app):
 
 
 def test_edit_first_contact_partial(app):
+    if app.contact.count() == 0:
+        app.contact.init_new_contact()
+        app.contact.fill_personal_data(PersonalData(firstname="test"))
+        app.contact.submit_contact()
     app.contact.init_first_contact_edition()
     app.contact.fill_personal_data(PersonalData(lastname="NazwiskoInne3",
                                                 nickname="NickInny3"))
