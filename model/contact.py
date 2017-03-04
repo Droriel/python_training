@@ -1,3 +1,11 @@
+class Contact:
+
+    def __init__(self, lastname=None, firstname=None, id=None):
+        self.lastname = lastname
+        self.firstname = firstname
+        self.id = id
+
+
 class PersonalData:
 
     def __init__(self, firstname=None, middlename=None, lastname=None, nickname=None, title=None, company=None, address=None):

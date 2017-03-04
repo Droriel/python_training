@@ -7,7 +7,10 @@ def test_del_contact_from_the_list(app):
         app.contact.init_new_contact()
         app.contact.fill_personal_data(PersonalData(firstname="test"))
         app.contact.submit_contact()
+    old_contacts = app.contact.get_contact_list()
     app.contact.delete_first_contact()
+    new_contacts = app.contact.get_contact_list()
+    assert len(old_contacts) - 1 == len(new_contacts)
 
 
 def test_del_edited_contact(app):
@@ -15,5 +18,8 @@ def test_del_edited_contact(app):
         app.contact.init_new_contact()
         app.contact.fill_personal_data(PersonalData(firstname="test"))
         app.contact.submit_contact()
+    old_contacts = app.contact.get_contact_list()
     app.contact.init_first_contact_edition()
     app.contact.delete_edited_contact()
+    new_contacts = app.contact.get_contact_list()
+    assert len(old_contacts) - 1 == len(new_contacts)
