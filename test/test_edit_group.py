@@ -5,22 +5,31 @@ from model.group import Group
 def test_edit_first_group_top_edit(app):
     if app.group.count() == 0:
         app.group.create(Group(name="test"))
+    old_groups = app.group.get_group_list()
     app.group.edit_first_group(Group(name="Nazwa1", header="Nagłówek1", footer="Stopka1"), edit_button='top')
-
+    new_groups = app.group.get_group_list()
+    assert len(old_groups) == len(new_groups)
 
 def test_edit_first_group_bottom_edit(app):
     if app.group.count() == 0:
         app.group.create(Group(name="test"))
+    old_groups = app.group.get_group_list()
     app.group.edit_first_group(Group(name="Nazwa2", header="Nagłówek2", footer="Stopka2"), edit_button='bottom')
-
+    new_groups = app.group.get_group_list()
+    assert len(old_groups) == len(new_groups)
 
 def test_edit_first_group_top_edit_name(app):
     if app.group.count() == 0:
         app.group.create(Group(name="test"))
+    old_groups = app.group.get_group_list()
     app.group.edit_first_group(Group(name="Nazwa3"), edit_button='top')
-
+    new_groups = app.group.get_group_list()
+    assert len(old_groups) == len(new_groups)
 
 def test_edit_first_group_top_edit_header(app):
     if app.group.count() == 0:
         app.group.create(Group(name="test", header="test"))
+    old_groups = app.group.get_group_list()
     app.group.edit_first_group(Group(header="Nagłówek3"), edit_button='top')
+    new_groups = app.group.get_group_list()
+    assert len(old_groups) == len(new_groups)

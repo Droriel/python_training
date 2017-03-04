@@ -124,6 +124,7 @@ class  ContactHelper:
         wd = self.app.wd
         wd.find_element_by_xpath("//input[@value='Usuń']").click()
 
+    # counting elements on the list
     def count(self):
         wd = self.app.wd
         self.open_main_page()
