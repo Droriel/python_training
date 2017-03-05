@@ -19,8 +19,8 @@ def test_add_contact(app):
     app.contact.fill_additional_data(AdditionalData(address="ul. Ulica 1/1 \nMiasto 00-111", phone="888888888"))
     app.contact.fill_notes(Notes(notes="To są uwagi."))
     app.contact.submit_contact()
+    assert len(old_contacts) + 1 == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    assert len(old_contacts) + 1 == len(new_contacts)
     old_contacts.append(contact)
     assert sorted(new_contacts, key=ContactBaseData.id_or_max) == sorted(old_contacts, key=ContactBaseData.id_or_max)
 
@@ -40,8 +40,8 @@ def test_add_empty_contact(app):
     app.contact.fill_additional_data(AdditionalData(address="", phone=""))
     app.contact.fill_notes(Notes(notes=""))
     app.contact.submit_contact()
+    assert len(old_contacts) + 1 == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    assert len(old_contacts) + 1 == len(new_contacts)
     old_contacts.append(contact)
     assert sorted(new_contacts, key=ContactBaseData.id_or_max) == sorted(old_contacts, key=ContactBaseData.id_or_max)
 
@@ -62,7 +62,7 @@ def test_add_contact_with_empty_addresses_phones(app):
     app.contact.fill_additional_data(AdditionalData(address="", phone=""))
     app.contact.fill_notes(Notes(notes="To są uwagi. Nowe uwagi."))
     app.contact.submit_contact()
+    assert len(old_contacts) + 1 == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    assert len(old_contacts) + 1 == len(new_contacts)
     old_contacts.append(contact)
     assert sorted(new_contacts, key=ContactBaseData.id_or_max) == sorted(old_contacts, key=ContactBaseData.id_or_max)

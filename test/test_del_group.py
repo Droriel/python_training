@@ -7,8 +7,8 @@ def test_delete_first_group_top_button(app):
         app.group.create(Group(name="test"))
     old_groups = app.group.get_group_list()
     app.group.delete_first_group(delete_button="top")
+    assert len(old_groups) - 1 == app.group.count()
     new_groups = app.group.get_group_list()
-    assert len(old_groups) - 1 == len(new_groups)
     old_groups[0:1] = []
     assert new_groups == old_groups
 
@@ -17,7 +17,7 @@ def test_delete_first_group_bottom_button(app):
         app.group.create(Group(name="test"))
     old_groups = app.group.get_group_list()
     app.group.delete_first_group(delete_button="bottom")
+    assert len(old_groups) - 1 == app.group.count()
     new_groups = app.group.get_group_list()
-    assert len(old_groups) - 1 == len(new_groups)
     old_groups[0:1] = []
     assert new_groups == old_groups

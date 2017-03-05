@@ -23,8 +23,8 @@ def test_edit_first_contact_top_upadate(app):
     app.contact.fill_additional_data(AdditionalData(address="ul. Inna 1/1 \nMiasto Inne 09-911", phone="1111111111"))
     app.contact.fill_notes(Notes(notes="To są  Zmienione uwagi."))
     app.contact.update_contact_top()
+    assert len(old_contacts) == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    assert len(old_contacts) == len(new_contacts)
     contact.id = old_contacts[0].id
     old_contacts[0] = contact
     assert sorted(old_contacts, key=ContactBaseData.id_or_max) == sorted(new_contacts, key=ContactBaseData.id_or_max)
@@ -51,8 +51,8 @@ def test_edit_first_contact_bottom_upadate(app):
     app.contact.fill_additional_data(AdditionalData(address="ul. Inna 21/1 \nMiasto Inne 29-911", phone="1111111112"))
     app.contact.fill_notes(Notes(notes="To są  Zmienione uwagi. 2"))
     app.contact.update_contact_bottom()
+    assert len(old_contacts) == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    assert len(old_contacts) == len(new_contacts)
     contact.id = old_contacts[0].id
     old_contacts[0] = contact
     assert sorted(old_contacts, key=ContactBaseData.id_or_max) == sorted(new_contacts, key=ContactBaseData.id_or_max)
@@ -77,8 +77,8 @@ def test_edit_first_contact_partial(app):
     app.contact.fill_additional_data(AdditionalData(phone="1111111113"))
     app.contact.fill_notes(Notes(notes="To są  Zmienione uwagi. 3"))
     app.contact.update_contact_bottom()
+    assert len(old_contacts) == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    assert len(old_contacts) == len(new_contacts)
     contact.id = old_contacts[0].id
     contact.firstname = old_contacts[0].firstname
     old_contacts[0] = contact

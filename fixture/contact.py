@@ -101,6 +101,7 @@ class  ContactHelper:
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         # closing alert window
         wd.switch_to_alert().accept()
+        self.contact_cache = None
 
     def delete_all_contacts(self):
         wd = self.app.wd
@@ -112,6 +113,7 @@ class  ContactHelper:
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         # closing alert window
         wd.switch_to_alert().accept()
+        self.contact_cache = None
 
     def init_first_contact_edition(self):
         wd = self.app.wd
@@ -121,14 +123,17 @@ class  ContactHelper:
     def update_contact_top(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//input[@value='Aktualizuj'][1]").click()
+        self.contact_cache = None
 
     def update_contact_bottom(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//input[@value='Aktualizuj'][2]").click()
+        self.contact_cache = None
 
     def delete_edited_contact(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//input[@value='Usuń']").click()
+        self.contact_cache = None
 
     # counting elements on the list
     def count(self):
@@ -136,10 +141,12 @@ class  ContactHelper:
         self.open_main_page()
         return len(wd.find_elements_by_name("selected[]"))
 
+    contact_cache = None
+
     def get_contact_list(self):
         wd = self.app.wd
         self.open_main_page()
-        contacts = []
+        self.contact_cache = []
         for element in wd.find_elements_by_name('entry'):
             id = element.find_element_by_name('selected[]').get_attribute('value')
             # . przed // oznacza relatywne użycie xpatha - jakby tworzyła nowy dom w ramach wiersza
@@ -147,5 +154,5 @@ class  ContactHelper:
             # text2 = element.find_element_by_xpath(".//td[3]").text
             text1 = element.find_element_by_css_selector('*>td:nth-of-type(2)').text
             text2 = element.find_element_by_css_selector('*>td:nth-of-type(3)').text
-            contacts.append(ContactBaseData(firstname=text2, lastname=text1, id=id))
-        return contacts
+            self.contact_cache.append(ContactBaseData(firstname=text2, lastname=text1, id=id))
+        return list(self.contact_cache)
