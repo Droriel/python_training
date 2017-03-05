@@ -50,7 +50,7 @@ class Emails:
         self.email3 = email3
 
 
-class Wwww:
+class Www:
 
     def __init__(self, www=None):
         self.www = www

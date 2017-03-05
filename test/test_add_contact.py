@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from model.contact import PersonalData, PhoneNumbers, Emails, Wwww, AdditionalData, Notes, ContactBaseData
+from model.contact import PersonalData, PhoneNumbers, Emails, Www, AdditionalData, Notes, ContactBaseData
 
 
 def test_add_contact(app):
@@ -12,7 +12,7 @@ def test_add_contact(app):
     app.contact.fill_phone_number(PhoneNumbers(home="111111111", mobile="222222222", work="333333333",
                                                 fax="444444444"))
     app.contact.fill_emails(Emails(email1="test1@test.pl", email2="test2@test.pl", email3="test3@test.pl"))
-    app.contact.fill_www_address(Wwww(www="www.test.pl"))
+    app.contact.fill_www_address(Www(www="www.test.pl"))
     # For dates parameters are day, month written in number, year str - number with""
     app.contact.fill_birth_date(day=28, month=2, year="2010")
     app.contact.fill_anniversary_date(day=31, month=12, year="2010")
@@ -33,7 +33,7 @@ def test_add_empty_contact(app):
     app.contact.fill_personal_data(PersonalData(middlename="", nickname="", title="", company="", address=""))
     app.contact.fill_phone_number(PhoneNumbers(home="", mobile="", work="", fax=""))
     app.contact.fill_emails(Emails(email1="", email2="", email3=""))
-    app.contact.fill_www_address(Wwww(www=""))
+    app.contact.fill_www_address(Www(www=""))
     # For dates parameters are day, month written in number, year str - number with""
     app.contact.fill_birth_date(day=-1, month=0, year="")
     app.contact.fill_anniversary_date(day=-1, month=0, year="")
@@ -55,7 +55,7 @@ def test_add_contact_with_empty_addresses_phones(app):
                                                 company="NZOZ Sierakowice", address=""))
     app.contact.fill_phone_number(PhoneNumbers(home="", mobile="", work="", fax=""))
     app.contact.fill_emails(Emails(email1="", email2="", email3=""))
-    app.contact.fill_www_address(Wwww(www=""))
+    app.contact.fill_www_address(Www(www=""))
     # For dates parameters are day, month written in number, year str - number with""
     app.contact.fill_birth_date(day=1, month=1, year="1990")
     app.contact.fill_anniversary_date(day=31, month=12, year="2012")
