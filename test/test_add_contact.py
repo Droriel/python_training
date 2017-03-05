@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from model.contact import PersonalData, PhoneNumbers, Emails, Wwww, AdditionalData, Notes
+from model.contact import PersonalData, PhoneNumbers, Emails, Wwww, AdditionalData, Notes, Contact
 
 
 def test_add_contact(app):
@@ -19,6 +19,10 @@ def test_add_contact(app):
     app.contact.submit_contact()
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) + 1 == len(new_contacts)
+    old_contacts.append(Contact(firstname="Imię", lastname="Nazwisko2"))
+    print(old_contacts)
+    print(new_contacts)
+    assert sorted(new_contacts, key=Contact.id_or_max) == sorted(old_contacts, key=Contact.id_or_max)
 
 
 def test_add_empty_contact(app):
@@ -37,6 +41,10 @@ def test_add_empty_contact(app):
     app.contact.submit_contact()
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) + 1 == len(new_contacts)
+    old_contacts.append(Contact(firstname="", lastname=""))
+    print(old_contacts)
+    print(new_contacts)
+    assert sorted(new_contacts, key=Contact.id_or_max) == sorted(old_contacts, key=Contact.id_or_max)
 
 
 def test_add_contact_with_empty_addresses_phones(app):
@@ -56,3 +64,7 @@ def test_add_contact_with_empty_addresses_phones(app):
     app.contact.submit_contact()
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) + 1 == len(new_contacts)
+    old_contacts.append(Contact(firstname="Anna", lastname="Kowalska"))
+    print(old_contacts)
+    print(new_contacts)
+    assert sorted(new_contacts, key=Contact.id_or_max) == sorted(old_contacts, key=Contact.id_or_max)
