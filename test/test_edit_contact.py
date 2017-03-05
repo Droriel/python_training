@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from model.contact import PersonalData, PhoneNumbers, Emails, Wwww, AdditionalData, Notes
+from model.contact import PersonalData, PhoneNumbers, Emails, Wwww, AdditionalData, Notes, ContactBaseData
 
 
 def test_edit_first_contact_top_upadate(app):
@@ -9,8 +9,10 @@ def test_edit_first_contact_top_upadate(app):
         app.contact.submit_contact()
     old_contacts = app.contact.get_contact_list()
     app.contact.init_first_contact_edition()
-    app.contact.fill_personal_data(PersonalData(firstname="ImięInne", middlename="DrugieInne", lastname="NazwiskoInne",
-                                                nickname="NickInny", title="tytułInny", company="FirmaInna", address="AdresInny"))
+    contact = ContactBaseData(firstname="ImięInne", lastname="NazwiskoInne")
+    app.contact.fill_contact_base_data(contact)
+    app.contact.fill_personal_data(PersonalData(middlename="DrugieInne", nickname="NickInny", title="tytułInny",
+                                                company="FirmaInna", address="AdresInny"))
     app.contact.fill_phone_number(PhoneNumbers(home="999999999", mobile="888888888", work="777777777",
                                                fax="444444445"))
     app.contact.fill_emails(Emails(email1="test1inny@test.pl", email2="test2inny@test.pl", email3="test3inny@test.pl"))
@@ -23,6 +25,9 @@ def test_edit_first_contact_top_upadate(app):
     app.contact.update_contact_top()
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) == len(new_contacts)
+    contact.id = old_contacts[0].id
+    old_contacts[0] = contact
+    assert sorted(old_contacts, key=ContactBaseData.id_or_max) == sorted(new_contacts, key=ContactBaseData.id_or_max)
 
 
 def test_edit_first_contact_bottom_upadate(app):
@@ -32,8 +37,10 @@ def test_edit_first_contact_bottom_upadate(app):
         app.contact.submit_contact()
     old_contacts = app.contact.get_contact_list()
     app.contact.init_first_contact_edition()
-    app.contact.fill_personal_data(PersonalData(firstname="ImięInne2", middlename="DrugieInne2", lastname="NazwiskoInne2",
-                                                nickname="NickInny2", title="tytułInny2", company="FirmaInna2", address="AdresInny2"))
+    contact = ContactBaseData(firstname="ImięInne2", lastname="NazwiskoInne2")
+    app.contact.fill_contact_base_data(contact)
+    app.contact.fill_personal_data(PersonalData(middlename="DrugieInne2", nickname="NickInny2", title="tytułInny2",
+                                                company="FirmaInna2", address="AdresInny2"))
     app.contact.fill_phone_number(PhoneNumbers(home="9999999992", mobile="8888888882", work="7777777772",
                                                fax="4444444452"))
     app.contact.fill_emails(Emails(email1="test1inny2@test.pl", email2="test2inny22@test.pl", email3="test3inny@test.pl"))
@@ -46,6 +53,9 @@ def test_edit_first_contact_bottom_upadate(app):
     app.contact.update_contact_bottom()
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) == len(new_contacts)
+    contact.id = old_contacts[0].id
+    old_contacts[0] = contact
+    assert sorted(old_contacts, key=ContactBaseData.id_or_max) == sorted(new_contacts, key=ContactBaseData.id_or_max)
 
 
 def test_edit_first_contact_partial(app):
@@ -55,8 +65,9 @@ def test_edit_first_contact_partial(app):
         app.contact.submit_contact()
     old_contacts = app.contact.get_contact_list()
     app.contact.init_first_contact_edition()
-    app.contact.fill_personal_data(PersonalData(lastname="NazwiskoInne3",
-                                                nickname="NickInny3"))
+    contact = ContactBaseData(lastname="NazwiskoInne3")
+    app.contact.fill_contact_base_data(contact)
+    app.contact.fill_personal_data(PersonalData(nickname="NickInny3"))
     app.contact.fill_phone_number(PhoneNumbers(home="", mobile="8888888883"))
     app.contact.fill_emails(Emails(email2="test2inny3@test.pl", email3=""))
     app.contact.fill_www_address(Wwww(www="www.testinny2.pl"))
@@ -68,3 +79,7 @@ def test_edit_first_contact_partial(app):
     app.contact.update_contact_bottom()
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) == len(new_contacts)
+    contact.id = old_contacts[0].id
+    contact.firstname = old_contacts[0].firstname
+    old_contacts[0] = contact
+    assert sorted(old_contacts, key=ContactBaseData.id_or_max) == sorted(new_contacts, key=ContactBaseData.id_or_max)

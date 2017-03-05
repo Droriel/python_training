@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from model.contact import Contact
+from model.contact import ContactBaseData
 
 
 class  ContactHelper:
@@ -73,11 +73,14 @@ class  ContactHelper:
         self.app.change_field_value("work", phoneNumbers.work)
         self.app.change_field_value("fax", phoneNumbers.fax)
 
+    def fill_contact_base_data(self,baseData):
+        wd = self.app.wd
+        self.app.change_field_value("firstname", baseData.firstname)
+        self.app.change_field_value("lastname", baseData.lastname)
+
     def fill_personal_data(self, personalData):
         wd = self.app.wd
-        self.app.change_field_value("firstname", personalData.firstname)
         self.app.change_field_value("middlename", personalData.middlename)
-        self.app.change_field_value("lastname", personalData.lastname)
         self.app.change_field_value("nickname", personalData.nickname)
         # Add photo
         # wd.find_element_by_name("photo").click()
@@ -138,10 +141,11 @@ class  ContactHelper:
         self.open_main_page()
         contacts = []
         for element in wd.find_elements_by_name('entry'):
-            # text1 = element.find_element_by_xpath("//*/td[2]").text
-            # text2 = element.find_element_by_xpath("//*/td[3]").text
             id = element.find_element_by_name('selected[]').get_attribute('value')
+            # . przed // oznacza relatywne użycie xpatha - jakby tworzyła nowy dom w ramach wiersza
+            # text1 = element.find_element_by_xpath(".//td[2]").text
+            # text2 = element.find_element_by_xpath(".//td[3]").text
             text1 = element.find_element_by_css_selector('*>td:nth-of-type(2)').text
             text2 = element.find_element_by_css_selector('*>td:nth-of-type(3)').text
-            contacts.append(Contact(firstname=text2, lastname=text1, id=id))
+            contacts.append(ContactBaseData(firstname=text2, lastname=text1, id=id))
         return contacts
