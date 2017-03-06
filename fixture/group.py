@@ -37,8 +37,12 @@ class GroupHelper:
     # deleting first group on the list with bottom or top button
     def delete_first_group(self, delete_button):
         wd = self.app.wd
+        self.delete_group_by_index(0, delete_button)
+
+    def delete_group_by_index(self, index, delete_button):
+        wd = self.app.wd
         self.open_groups_page()
-        self.select_first_group()
+        self.select_group_by_index(index)
         # submit deletion
         if delete_button == 'top':
             wd.find_element_by_xpath("(//input[@name='delete'])[1]").click()
@@ -51,12 +55,20 @@ class GroupHelper:
 
     def select_first_group(self):
         wd = self.app.wd
-        wd.find_element_by_name("selected[]").click()
+        self.select_group_by_index(0)
+
+    def select_group_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
 
     def edit_first_group(self, new_group_data, edit_button):
         wd = self.app.wd
+        self.edit_group_by_index(0, new_group_data, edit_button)
+
+    def edit_group_by_index(self, index, new_group_data, edit_button):
+        wd = self.app.wd
         self.open_groups_page()
-        self.select_first_group()
+        self.select_group_by_index(index)
         # Init first group_edition
         if edit_button == 'top':
             wd.find_element_by_xpath("(//input[@name='edit'])[1]").click()
