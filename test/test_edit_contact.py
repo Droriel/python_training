@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from random import randrange
 from model.contact import PersonalData, PhoneNumbers, Emails, Www, AdditionalData, Notes, ContactBaseData
 
 
@@ -8,7 +9,8 @@ def test_edit_first_contact_top_upadate(app):
         app.contact.fill_personal_data(PersonalData(firstname="test"))
         app.contact.submit_contact()
     old_contacts = app.contact.get_contact_list()
-    app.contact.init_first_contact_edition()
+    index = randrange(len(old_contacts))
+    app.contact.init_by_index_contact_edition(index)
     contact = ContactBaseData(firstname="ImięInne", lastname="NazwiskoInne")
     app.contact.fill_contact_base_data(contact)
     app.contact.fill_personal_data(PersonalData(middlename="DrugieInne", nickname="NickInny", title="tytułInny",
@@ -25,8 +27,8 @@ def test_edit_first_contact_top_upadate(app):
     app.contact.update_contact_top()
     assert len(old_contacts) == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    contact.id = old_contacts[0].id
-    old_contacts[0] = contact
+    contact.id = old_contacts[index].id
+    old_contacts[index] = contact
     assert sorted(old_contacts, key=ContactBaseData.id_or_max) == sorted(new_contacts, key=ContactBaseData.id_or_max)
 
 
@@ -36,7 +38,8 @@ def test_edit_first_contact_bottom_upadate(app):
         app.contact.fill_personal_data(PersonalData(firstname="test"))
         app.contact.submit_contact()
     old_contacts = app.contact.get_contact_list()
-    app.contact.init_first_contact_edition()
+    index = randrange(len(old_contacts))
+    app.contact.init_by_index_contact_edition(index)
     contact = ContactBaseData(firstname="ImięInne2", lastname="NazwiskoInne2")
     app.contact.fill_contact_base_data(contact)
     app.contact.fill_personal_data(PersonalData(middlename="DrugieInne2", nickname="NickInny2", title="tytułInny2",
@@ -53,8 +56,8 @@ def test_edit_first_contact_bottom_upadate(app):
     app.contact.update_contact_bottom()
     assert len(old_contacts) == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    contact.id = old_contacts[0].id
-    old_contacts[0] = contact
+    contact.id = old_contacts[index].id
+    old_contacts[index] = contact
     assert sorted(old_contacts, key=ContactBaseData.id_or_max) == sorted(new_contacts, key=ContactBaseData.id_or_max)
 
 
@@ -64,7 +67,8 @@ def test_edit_first_contact_partial(app):
         app.contact.fill_personal_data(PersonalData(firstname="test"))
         app.contact.submit_contact()
     old_contacts = app.contact.get_contact_list()
-    app.contact.init_first_contact_edition()
+    index = randrange(len(old_contacts))
+    app.contact.init_by_index_contact_edition(index)
     contact = ContactBaseData(lastname="NazwiskoInne3")
     app.contact.fill_contact_base_data(contact)
     app.contact.fill_personal_data(PersonalData(nickname="NickInny3"))
@@ -79,7 +83,7 @@ def test_edit_first_contact_partial(app):
     app.contact.update_contact_bottom()
     assert len(old_contacts) == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    contact.id = old_contacts[0].id
-    contact.firstname = old_contacts[0].firstname
-    old_contacts[0] = contact
+    contact.id = old_contacts[index].id
+    contact.firstname = old_contacts[index].firstname
+    old_contacts[index] = contact
     assert sorted(old_contacts, key=ContactBaseData.id_or_max) == sorted(new_contacts, key=ContactBaseData.id_or_max)
