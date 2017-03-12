@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from model.contact import ContactBaseData
+import re
 
 
 class  ContactHelper:
@@ -128,6 +129,11 @@ class  ContactHelper:
         self.open_main_page()
         wd.find_elements_by_xpath("//img[@title='Edytuj']")[index].click()
 
+    def open_contact_view_by_index(self, index):
+        wd = self.app.wd
+        self.open_main_page()
+        wd.find_elements_by_xpath("//img[@alt='Szczegóły']")[index].click()
+
     def update_contact_top(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//input[@value='Aktualizuj'][1]").click()
@@ -155,12 +161,54 @@ class  ContactHelper:
         wd = self.app.wd
         self.open_main_page()
         self.contact_cache = []
-        for element in wd.find_elements_by_name('entry'):
-            id = element.find_element_by_name('selected[]').get_attribute('value')
+        for row in wd.find_elements_by_name('entry'):
+            cells = row.find_elements_by_tag_name('td')
+            id = cells[0].find_element_by_tag_name('input').get_attribute('value')
             # . przed // oznacza relatywne użycie xpatha - jakby tworzyła nowy dom w ramach wiersza
             # text1 = element.find_element_by_xpath(".//td[2]").text
             # text2 = element.find_element_by_xpath(".//td[3]").text
-            text1 = element.find_element_by_css_selector('*>td:nth-of-type(2)').text
-            text2 = element.find_element_by_css_selector('*>td:nth-of-type(3)').text
-            self.contact_cache.append(ContactBaseData(firstname=text2, lastname=text1, id=id))
+            # lastName = row.find_element_by_css_selector('*>td:nth-of-type(2)').text
+            # firstName = row.find_element_by_css_selector('*>td:nth-of-type(3)').text
+            firstName = cells[2].text
+            lastName = cells[1].text
+            allPhones = cells[5].text
+            self.contact_cache.append(ContactBaseData(firstname=firstName, lastname=lastName, id=id,
+                                                      allPhonesFromHomePage=allPhones))
         return list(self.contact_cache)
+
+    def get_contact_info_from_edit_page(self, index):
+        wd = self.app.wd
+        self.init_by_index_contact_edition(index)
+        id = wd.find_element_by_name('id').get_attribute('value')
+        firstname = wd.find_element_by_name('firstname').get_attribute('value')
+        lastname = wd.find_element_by_name('lastname').get_attribute('value')
+        homephone = wd.find_element_by_name('home').get_attribute('value')
+        workphone = wd.find_element_by_name('work').get_attribute('value')
+        mobilephone = wd.find_element_by_name('mobile').get_attribute('value')
+        additionalphone = wd.find_element_by_name('phone2').get_attribute('value')
+        return ContactBaseData(firstname=firstname, lastname=lastname, id=id,
+                               homephone=homephone, workphone=workphone, mobilephone=mobilephone,
+                                                    additionalphone=additionalphone)
+
+    def get_contact_info_from_view_page(self, index):
+        wd = self.app.wd
+        self.open_contact_view_by_index(index)
+        text = wd.find_element_by_id('content').text
+        if re.search('H:\s(.*)', text) is not None:
+            homephone = re.search('H:\s(.*)', text).group(1)
+        else:
+            homephone = None
+        if re.search('H:\s(.*)', text) is not None:
+            workphone = re.search('W:\s(.*)', text).group(1)
+        else:
+            workphone = None
+        if re.search('H:\s(.*)', text) is not None:
+            mobilephone = re.search('M:\s(.*)', text).group(1)
+        else:
+            mobilephone = None
+        if re.search('H:\s(.*)', text) is not None:
+            additionalphone = re.search('P:\s(.*)', text).group(1)
+        else:
+            additionalphone = None
+        return ContactBaseData(homephone=homephone, workphone=workphone, mobilephone=mobilephone,
+                                                    additionalphone=additionalphone)

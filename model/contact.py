@@ -3,10 +3,21 @@ from sys import maxsize
 
 class ContactBaseData:
 
-    def __init__(self, lastname=None, firstname=None, id=None):
+    def __init__(self, lastname=None, firstname=None, id=None, address=None,
+                 homephone=None, mobilephone=None, workphone=None, additionalphone=None, allPhonesFromHomePage=None):
         self.lastname = lastname
         self.firstname = firstname
         self.id = id
+        self.address = address
+        #all emails
+        #all phones
+        self.homephone = homephone
+        self.mobilephone = mobilephone
+        self.workphone = workphone
+        self.additionalphone = additionalphone
+        self.allPhonesFromHomePage = allPhonesFromHomePage
+
+
 
     def __repr__(self):
         return '%s: %s %s' % (self.id, self.lastname, self.firstname)
