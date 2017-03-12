@@ -74,10 +74,14 @@ class  ContactHelper:
         self.app.change_field_value("work", phoneNumbers.work)
         self.app.change_field_value("fax", phoneNumbers.fax)
 
-    def fill_contact_base_data(self,baseData):
+    def fill_contact_base_data(self,baseData, phoneNumbers, additionalData):
         wd = self.app.wd
         self.app.change_field_value("firstname", baseData.firstname)
         self.app.change_field_value("lastname", baseData.lastname)
+        self.app.change_field_value("home", phoneNumbers.home)
+        self.app.change_field_value("mobile", phoneNumbers.mobile)
+        self.app.change_field_value("work", phoneNumbers.work)
+        self.app.change_field_value("phone2", additionalData.phone)
 
     def fill_personal_data(self, personalData):
         wd = self.app.wd
