@@ -74,14 +74,17 @@ class  ContactHelper:
         self.app.change_field_value("work", phoneNumbers.work)
         self.app.change_field_value("fax", phoneNumbers.fax)
 
-    def fill_contact_base_data(self,baseData, phoneNumbers, additionalData):
+    def fill_contact_base_data(self,baseData):
         wd = self.app.wd
         self.app.change_field_value("firstname", baseData.firstname)
         self.app.change_field_value("lastname", baseData.lastname)
-        self.app.change_field_value("home", phoneNumbers.home)
-        self.app.change_field_value("mobile", phoneNumbers.mobile)
-        self.app.change_field_value("work", phoneNumbers.work)
-        self.app.change_field_value("phone2", additionalData.phone)
+        # self.app.change_field_value("home", phoneNumbers.home)
+        # self.app.change_field_value("mobile", phoneNumbers.mobile)
+        # self.app.change_field_value("work", phoneNumbers.work)
+        # self.app.change_field_value("phone2", additionalData.phone)
+        # self.app.change_field_value("email", emails.email1)
+        # self.app.change_field_value("email2", emails.email2)
+        # self.app.change_field_value("email3", emails.email3)
 
     def fill_personal_data(self, personalData):
         wd = self.app.wd
@@ -176,8 +179,9 @@ class  ContactHelper:
             firstName = cells[2].text
             lastName = cells[1].text
             allPhones = cells[5].text
+            allEmails = cells[4].text
             self.contact_cache.append(ContactBaseData(firstname=firstName, lastname=lastName, id=id,
-                                                      allPhonesFromHomePage=allPhones))
+                                                      allPhonesFromHomePage=allPhones, allEmailsFromHomePage=allEmails))
         return list(self.contact_cache)
 
     def get_contact_info_from_edit_page(self, index):
@@ -190,9 +194,12 @@ class  ContactHelper:
         workphone = wd.find_element_by_name('work').get_attribute('value')
         mobilephone = wd.find_element_by_name('mobile').get_attribute('value')
         additionalphone = wd.find_element_by_name('phone2').get_attribute('value')
+        email1 = wd.find_element_by_name('email').get_attribute('value')
+        email2 = wd.find_element_by_name('email2').get_attribute('value')
+        email3 = wd.find_element_by_name('email3').get_attribute('value')
         return ContactBaseData(firstname=firstname, lastname=lastname, id=id,
                                homephone=homephone, workphone=workphone, mobilephone=mobilephone,
-                                                    additionalphone=additionalphone)
+                                                    additionalphone=additionalphone, email1=email1, email2=email2, email3=email3)
 
     def get_contact_info_from_view_page(self, index):
         wd = self.app.wd
@@ -202,17 +209,21 @@ class  ContactHelper:
             homephone = re.search('H:\s(.*)', text).group(1)
         else:
             homephone = None
-        if re.search('H:\s(.*)', text) is not None:
+        if re.search('W:\s(.*)', text) is not None:
             workphone = re.search('W:\s(.*)', text).group(1)
         else:
             workphone = None
-        if re.search('H:\s(.*)', text) is not None:
+        if re.search('M:\s(.*)', text) is not None:
             mobilephone = re.search('M:\s(.*)', text).group(1)
         else:
             mobilephone = None
-        if re.search('H:\s(.*)', text) is not None:
+        if re.search('P:\s(.*)', text) is not None:
             additionalphone = re.search('P:\s(.*)', text).group(1)
         else:
             additionalphone = None
+        # allEmails = wd.find_elements_by_xpath("//a[starts-with(@href, 'mailto:')]")
+        allEmails = []
+        for i in range(0, len(wd.find_elements_by_xpath("//a[starts-with(@href, 'mailto:')]"))):
+            allEmails.append(wd.find_elements_by_xpath("//a[starts-with(@href, 'mailto:')]")[i].text)
         return ContactBaseData(homephone=homephone, workphone=workphone, mobilephone=mobilephone,
-                                                    additionalphone=additionalphone)
+                                                    additionalphone=additionalphone, allEmailsFromHomePage=allEmails)
