@@ -180,7 +180,8 @@ class  ContactHelper:
             lastName = cells[1].text
             allPhones = cells[5].text
             allEmails = cells[4].text
-            self.contact_cache.append(ContactBaseData(firstname=firstName, lastname=lastName, id=id,
+            address = cells[3].text
+            self.contact_cache.append(ContactBaseData(firstname=firstName, lastname=lastName, id=id, address=address,
                                                       allPhonesFromHomePage=allPhones, allEmailsFromHomePage=allEmails))
         return list(self.contact_cache)
 
@@ -190,6 +191,7 @@ class  ContactHelper:
         id = wd.find_element_by_name('id').get_attribute('value')
         firstname = wd.find_element_by_name('firstname').get_attribute('value')
         lastname = wd.find_element_by_name('lastname').get_attribute('value')
+        address = wd.find_element_by_name('address').get_attribute('value')
         homephone = wd.find_element_by_name('home').get_attribute('value')
         workphone = wd.find_element_by_name('work').get_attribute('value')
         mobilephone = wd.find_element_by_name('mobile').get_attribute('value')
@@ -199,7 +201,7 @@ class  ContactHelper:
         email3 = wd.find_element_by_name('email3').get_attribute('value')
         return ContactBaseData(firstname=firstname, lastname=lastname, id=id,
                                homephone=homephone, workphone=workphone, mobilephone=mobilephone,
-                                                    additionalphone=additionalphone, email1=email1, email2=email2, email3=email3)
+                                                    additionalphone=additionalphone, email1=email1, email2=email2, email3=email3, address=address)
 
     def get_contact_info_from_view_page(self, index):
         wd = self.app.wd
