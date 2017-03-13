@@ -1,5 +1,13 @@
 # -*- coding: utf-8 -*-
 from model.contact import PersonalData, PhoneNumbers, Emails, Www, AdditionalData, Notes, ContactBaseData
+import random
+import string
+
+
+def random_string(prefix, maxlen):
+    symbols = string.ascii_letters + string.digits + string.punctuation + ' '*10
+    return prefix + ''.join([random.choice(symbols) for i in range(random.randrange(maxlen))])
+
 
 
 def test_add_contact(app):
