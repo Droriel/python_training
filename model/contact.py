@@ -4,22 +4,23 @@ from sys import maxsize
 class ContactAllData:
 
     def __init__(self, contactBaseData, personalData, phoneNumbers, emails, www, additionalData, notes):
-        self.ContactBaseData = contactBaseData
-        self.PersonalData = personalData
-        self.PhoneNumbers = phoneNumbers
-        self.Emails = emails
-        self.Www = www
-        self.AdditionalData = additionalData
-        self.Notes = notes
+        self.contactBaseData = contactBaseData
+        self.personalData = personalData
+        self.phoneNumbers = phoneNumbers
+        self.emails = emails
+        self.www = www
+        self.additionalData = additionalData
+        self.notes = notes
 
     def __repr__(self):
-        return '%s' % (repr(self.ContactBaseData))
+        return '%s' % (repr(self.contactBaseData))
 
     # def __repr__(self):
     #     return '%s: %s %s' % (self.ContactBaseData.id, self.ContactBaseData.lastname, self.ContactBaseData.firstname)
     #
-    def __eq__(self, other):
-        return (self.ContactBaseData == other.ContactBaseData)
+    # def __eq__(self, other):
+    #     return (self.ContactBaseData == other.ContactBaseData)
+
 
 class ContactBaseData:
 
