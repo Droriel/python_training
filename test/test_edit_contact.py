@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from random import randrange
-from model.contact import PersonalData, PhoneNumbers, Emails, Www, AdditionalData, Notes, ContactBaseData
+from model.contact import PersonalData, PhoneNumbers, Emails, Www, AdditionalData, Notes, ContactBaseData, BirthDate, AnniversaryDate
 
 
 def test_edit_first_contact_top_upadate(app):
@@ -20,8 +20,8 @@ def test_edit_first_contact_top_upadate(app):
     app.contact.fill_emails(Emails(email1="test1inny@test.pl", email2="test2inny@test.pl", email3="test3inny@test.pl"))
     app.contact.fill_www_address(Www(www="www.testinny.pl"))
     # For dates parameters are day, month written in number +1 e.g. February: month=2+1, year str - number with""
-    app.contact.fill_birth_date(day=13, month=8+1, year="2002")
-    app.contact.fill_anniversary_date(day=5, month=3+1, year="2015")
+    app.contact.fill_birth_date(BirthDate(day=13, month=8+1, year="2002"))
+    app.contact.fill_anniversary_date(AnniversaryDate(day=5, month=3+1, year="2015"))
     app.contact.fill_additional_data(AdditionalData(address="ul. Inna 1/1 \nMiasto Inne 09-911", phone="1111111111"))
     app.contact.fill_notes(Notes(notes="To są  Zmienione uwagi."))
     app.contact.update_contact_top()
@@ -49,8 +49,8 @@ def test_edit_first_contact_bottom_upadate(app):
     app.contact.fill_emails(Emails(email1="test1inny2@test.pl", email2="test2inny22@test.pl", email3="test3inny@test.pl"))
     app.contact.fill_www_address(Www(www="www.testinny2.pl"))
     # For dates parameters are day, month written in number +1 e.g. February: month=2+1, year str - number with""
-    app.contact.fill_birth_date(day=11, month=9, year="2004")
-    app.contact.fill_anniversary_date(day=9, month=2, year="2011")
+    app.contact.fill_birth_date(BirthDate(day=11, month=9, year="2004"))
+    app.contact.fill_anniversary_date(AnniversaryDate(day=9, month=2, year="2011"))
     app.contact.fill_additional_data(AdditionalData(address="ul. Inna 21/1 \nMiasto Inne 29-911", phone="1111111112"))
     app.contact.fill_notes(Notes(notes="To są  Zmienione uwagi. 2"))
     app.contact.update_contact_bottom()
@@ -76,8 +76,8 @@ def test_edit_first_contact_partial(app):
     app.contact.fill_emails(Emails(email2="test2inny3@test.pl", email3=""))
     app.contact.fill_www_address(Www(www="www.testinny2.pl"))
     # For dates parameters are day, month written in number +1 e.g. February: month=2+1, year str - number with""
-    app.contact.fill_birth_date(day=3, month=2+1, year="2003")
-    app.contact.fill_anniversary_date(day=4, month=4+1, year="2004")
+    app.contact.fill_birth_date(BirthDate(day=3, month=2+1, year="2003"))
+    app.contact.fill_anniversary_date(AnniversaryDate(day=4, month=4+1, year="2004"))
     app.contact.fill_additional_data(AdditionalData(phone="1111111113"))
     app.contact.fill_notes(Notes(notes="To są  Zmienione uwagi. 3"))
     app.contact.update_contact_bottom()

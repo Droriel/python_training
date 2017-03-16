@@ -2,7 +2,7 @@
 import pytest
 
 from model.contact import PersonalData, PhoneNumbers, Emails, Www, AdditionalData, Notes, ContactBaseData, \
-    ContactAllData
+    ContactAllData, BirthDate, AnniversaryDate
 import random
 import string
 
@@ -44,6 +44,8 @@ testData = [ContactAllData(contactBaseData=ContactBaseData(firstname=random_stri
                                                      work=random_phone_number(12), fax=random_phone_number(10)),
                            emails=Emails(email1=random_email(8), email2=random_email(5), email3=random_email(6)),
                            www=Www(www=random_www(30)),
+                           birthDate=BirthDate(day=1, month=1, year='2003'),
+                           anniversaryDate=AnniversaryDate(day=31, month=12, year='2015'),
                            additionalData=AdditionalData(address=random_string_with_new_line('Adres dodatkowy: ', 30) ,
                                                          phone=random_phone_number(12)),
                            notes=Notes(notes=random_string_with_new_line('n', 100)))]\
@@ -56,6 +58,8 @@ testData = [ContactAllData(contactBaseData=ContactBaseData(firstname=random_stri
                                                      work='', fax=''),
                            emails=Emails(email1='', email2='', email3=''),
                            www=Www(www=''),
+                           birthDate=BirthDate(day=-1, month=0, year=''),
+                           anniversaryDate=AnniversaryDate(day=-1, month=0, year=''),
                            additionalData=AdditionalData(address='' ,
                                                          phone=''),
                            notes=Notes(notes=''))]\
@@ -68,6 +72,8 @@ testData = [ContactAllData(contactBaseData=ContactBaseData(firstname=random_stri
                                                      work='', fax=''),
                            emails=Emails(email1='', email2='', email3=''),
                            www=Www(www=''),
+                           birthDate=BirthDate(day=31, month=12, year='1999'),
+                           anniversaryDate=AnniversaryDate(day=1, month=1, year='2010'),
                            additionalData=AdditionalData(address='',
                                                          phone=''),
                            notes=Notes(notes=random_string_with_new_line('n', 100)))]\
@@ -80,6 +86,8 @@ testData = [ContactAllData(contactBaseData=ContactBaseData(firstname=random_stri
                                                       work='', fax=''),
                             emails=Emails(email1='', email2='', email3=''),
                             www=Www(www=''),
+                            birthDate=BirthDate(day=-1, month=0, year=''),
+                            anniversaryDate=AnniversaryDate(day=-1, month=0, year=''),
                             additionalData=AdditionalData(address='',
                                                           phone=''),
                             notes=Notes(notes=''))] \
@@ -92,6 +100,8 @@ testData = [ContactAllData(contactBaseData=ContactBaseData(firstname=random_stri
                                                   work='', fax=''),
                         emails=Emails(email1='', email2='', email3=''),
                         www=Www(www=''),
+                        birthDate=BirthDate(day=-1, month=0, year=''),
+                        anniversaryDate=AnniversaryDate(day=-1, month=0, year=''),
                         additionalData=AdditionalData(address='',
                                                       phone=''),
                         notes=Notes(notes=''))] \
@@ -111,8 +121,8 @@ def test_add_contact(app, contact):
     app.contact.fill_emails(contact.emails)
     app.contact.fill_www_address(contact.www)
     # For dates parameters are day, month written in number, year str - number with""
-    app.contact.fill_birth_date(day=28, month=2, year="2010")
-    app.contact.fill_anniversary_date(day=31, month=12, year="2010")
+    app.contact.fill_birth_date(contact.birthDate)
+    app.contact.fill_anniversary_date(contact.anniversaryDate)
     app.contact.fill_additional_data(contact.additionalData)
     app.contact.fill_notes(contact.notes)
     app.contact.submit_contact()

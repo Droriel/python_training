@@ -3,7 +3,7 @@ from sys import maxsize
 
 class ContactAllData:
 
-    def __init__(self, contactBaseData, personalData, phoneNumbers, emails, www, additionalData, notes):
+    def __init__(self, contactBaseData, personalData, phoneNumbers, emails, www, additionalData, notes, birthDate, anniversaryDate):
         self.contactBaseData = contactBaseData
         self.personalData = personalData
         self.phoneNumbers = phoneNumbers
@@ -11,6 +11,8 @@ class ContactAllData:
         self.www = www
         self.additionalData = additionalData
         self.notes = notes
+        self.birthDate = birthDate
+        self.anniversaryDate = anniversaryDate
 
     def __repr__(self):
         return '%s' % (repr(self.contactBaseData))
@@ -101,6 +103,21 @@ class Notes:
 
     def __init__(self, notes=None):
         self.notes = notes
+
+
+class BirthDate:
+
+    def __init__(self, day=None, month=None, year=None):
+        self.day = day
+        self.month = month
+        self.year = year
+
+
+class AnniversaryDate:
+    def __init__(self, day=None, month=None, year=None):
+        self.day = day
+        self.month = month
+        self.year = year
 
 
 
