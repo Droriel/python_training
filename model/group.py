@@ -1,6 +1,6 @@
 # w module sys zamieszczone są stałe
 from sys import maxsize
-
+from test_addons import adjustments
 
 class Group:
 
@@ -14,7 +14,7 @@ class Group:
         return '%s: %s %s %s ' % (self.id, self.name, self.header, self.footer)
 
     def __eq__(self, other):
-            return (self.id == other.id or self.id is None or other.id is None) and self.name == other.name
+            return (self.id == other.id or self.id is None or other.id is None) and self.name == adjustments.clear_multiple_spaces(other.name).strip()
 
     def id_or_max(self):
         if self.id:

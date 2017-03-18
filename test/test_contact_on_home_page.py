@@ -19,11 +19,11 @@ def test_contact_on_the_home_page_from_edit_page(app):
     index = randrange(len(contact_list))
     contactFromHomePage = app.contact.get_contact_list()[index]
     contactFromEditPage = app.contact.get_contact_info_from_edit_page(index)
-    assert contactFromHomePage.lastname == adjustments.clear_multiple_spaces(contactFromEditPage.lastname)
-    assert contactFromHomePage.firstname == adjustments.clear_multiple_spaces(contactFromEditPage.firstname)
-    assert contactFromHomePage.address == adjustments.clear_multiple_spaces(contactFromEditPage.address)
-    assert contactFromHomePage.allEmailsFromHomePage == merge_emails_like_on_home_page(contactFromEditPage)
-    assert contactFromHomePage.allPhonesFromHomePage == merge_phones_like_on_home_page(contactFromEditPage)
+    assert contactFromHomePage.lastname == adjustments.clear_multiple_spaces(contactFromEditPage.lastname).strip()
+    assert contactFromHomePage.firstname == adjustments.clear_multiple_spaces(contactFromEditPage.firstname).strip()
+    assert contactFromHomePage.address == adjustments.clear_multiple_spaces(contactFromEditPage.address).strip()
+    assert contactFromHomePage.allEmailsFromHomePage == merge_emails_like_on_home_page(contactFromEditPage).strip()
+    assert contactFromHomePage.allPhonesFromHomePage == merge_phones_like_on_home_page(contactFromEditPage).strip()
 
 
 def merge_emails_like_on_home_page(contact):

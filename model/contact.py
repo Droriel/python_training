@@ -50,8 +50,8 @@ class ContactBaseData:
 
     def __eq__(self, other):
         return (self.id == other.id or self.id is None or other.id is None) \
-               and self.lastname.strip() == adjustments.clear_multiple_spaces(other.lastname.strip()) \
-               and self.firstname.strip() == adjustments.clear_multiple_spaces(other.firstname.strip())
+               and self.lastname.strip() == adjustments.clear_multiple_spaces(other.lastname).strip() \
+               and self.firstname.strip() == adjustments.clear_multiple_spaces(other.firstname).strip()
 
     def id_or_max(self):
         if self.id:
