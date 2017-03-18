@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium import webdriver
 from fixture.session import SessionHelper
 from fixture.group import GroupHelper
 from fixture.contact import ContactHelper
@@ -7,8 +7,16 @@ from fixture.contact import ContactHelper
 
 class Application:
 
-    def __init__(self):
-        self.wd = WebDriver()
+    def __init__(self, browser='firefox'):
+        if browser == 'firefox':
+            self.wd = webdriver.Firefox()
+        elif browser == 'chrome':
+            self.wd = webdriver.Chrome()
+        elif browser == 'edge':
+            self.wd = webdriver.Edge()
+        else:
+            raise ValueError('Unrecognized browser %s' % browser)
+        # self.wd = webdriver.Firefox()
         # self.wd.implicitly_wait(5) w tej aplikacji nie ma potrzeby - czeka zadaną ilość sekund na pojawienie się elementu
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
