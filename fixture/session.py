@@ -8,14 +8,17 @@ class  SessionHelper:
         wd = self.app.wd
         self.app.open_home_page()
         # Fill in username
-        wd.find_element_by_name("user").click()
-        wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys(username)
-        # Fill in password
-        wd.find_element_by_name("pass").click()
-        wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys(password)
-        wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
+        try:
+            wd.find_element_by_name("user").click()
+            wd.find_element_by_name("user").clear()
+            wd.find_element_by_name("user").send_keys(username)
+            # Fill in password
+            wd.find_element_by_name("pass").click()
+            wd.find_element_by_name("pass").clear()
+            wd.find_element_by_name("pass").send_keys(password)
+            wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
+        except:
+            raise ValueError('Logowanie nie powiodło się.')
 
     def logout(self):
         wd = self.app.wd
