@@ -22,7 +22,7 @@ def app(request):
             fixture = Application(browser=browser, base_url=configuration['baseUrl'])
         fixture.session.ensure_login(username=configuration['username'], password=configuration['password'])
     except ValueError:
-        print('Logowanie nie powiodło się.')
+        print('Logowanie nie powiodło się.\n Logging in error.')
     return fixture
 
 

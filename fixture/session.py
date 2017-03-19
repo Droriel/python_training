@@ -16,9 +16,7 @@ class  SessionHelper:
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
-        try:
-            self.is_logged_in()
-        except:
+        if not self.is_logged_in():
             raise ValueError()
 
     def logout(self):
