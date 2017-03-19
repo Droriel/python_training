@@ -1,21 +1,8 @@
 # -*- coding: utf-8 -*-
 import pytest
 from model.group import Group
-import random
-import string
-
-
-def random_string(prefix, maxlen):
-    symbols = string.ascii_letters + string.digits + string.punctuation + ' '*10
-    return prefix + ''.join([random.choice(symbols) for i in range(random.randrange(maxlen))])
-
-
-testData =  [
-    Group(name=name, header=header, footer=footer)
-    for name in ['', random_string("Nazwa", 10)]
-    for header in ['', random_string("Nagłówek", 20)]
-    for footer in ['', random_string("Stopka", 20)]
-]
+from data.add_group import testData
+# from data.add_group import constant as testData
 
 
 # ids = prezentacja danych testowych w sprawozdaniu
