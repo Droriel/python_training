@@ -3,6 +3,8 @@ import json
 import os.path
 import pytest
 from fixture.application import Application
+import importlib
+import jsonpickle
 
 fixture = None
 configuration = None
@@ -38,5 +40,25 @@ def stop(request):
 def pytest_addoption(parser):
     parser.addoption('--browser', action='store', default='firefox')
     parser.addoption('--configuration', action='store', default='configuration.json')
+
+
+def pytest_generate_tests(metafunc):
+    for fixture in metafunc.fixturenames:
+        if fixture.startswith("data_"):
+            testData = load_from_module(fixture[5:])
+            metafunc.parametrize(fixture, testData, ids=[str(x) for x in testData])
+        elif fixture.startswith("json_"):
+            testData = load_from_json(fixture[5:])
+            metafunc.parametrize(fixture, testData, ids=[str(x) for x in testData])
+
+
+def load_from_module(module):
+    return importlib.import_module('data.%s' % module).testData
+
+
+def load_from_json(file):
+    with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data/%s.json" %file)) as f:
+        return jsonpickle.decode(f.read())
+
 
 
