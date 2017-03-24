@@ -1,0 +1,587 @@
+[
+  {
+    "py/object": "model.contact.ContactAllData",
+    "additionalData": {
+      "py/object": "model.contact.AdditionalData",
+      "address": "Adres dodatkowy: TPUVUp B",
+      "phone": "34990641724"
+    },
+    "anniversaryDate": {
+      "py/object": "model.contact.AnniversaryDate",
+      "day": 27,
+      "month": 8,
+      "year": "7875"
+    },
+    "birthDate": {
+      "py/object": "model.contact.BirthDate",
+      "day": 16,
+      "month": 8,
+      "year": "9098"
+    },
+    "contactBaseData": {
+      "py/object": "model.contact.ContactBaseData",
+      "additionalphone": null,
+      "address": null,
+      "allEmailsFromHomePage": null,
+      "allPhonesFromHomePage": null,
+      "email1": null,
+      "email2": null,
+      "email3": null,
+      "firstname": "",
+      "homephone": null,
+      "id": null,
+      "lastname": "_ -    Wb",
+      "mobilephone": null,
+      "workphone": null
+    },
+    "emails": {
+      "py/object": "model.contact.Emails",
+      "email1": "Yu  HVzD R@ E-__l.fo",
+      "email2": "Qr- zz-v@.iRj",
+      "email3": "- CDx @q.pir"
+    },
+    "notes": {
+      "py/object": "model.contact.Notes",
+      "notes": "n__nxrl9hB \nXrp H 6i\nQ NgCV I Cud\n w9W_Q9t 7a -F - ElVXk \n  4 a-V yjJWK"
+    },
+    "personalData": {
+      "py/object": "model.contact.PersonalData",
+      "address": "Adres podstawowy: yzj-\nAkv- H ZKas",
+      "company": "  __sPD e",
+      "middlename": "vd--C-K",
+      "nickname": "",
+      "title": "R"
+    },
+    "phoneNumbers": {
+      "py/object": "model.contact.PhoneNumbers",
+      "fax": "9969434",
+      "home": "9465",
+      "mobile": "(514621",
+      "work": "7813"
+    },
+    "www": {
+      "py/object": "model.contact.Www",
+      "www": "www.jeusZIudjI.XO"
+    }
+  },
+  {
+    "py/object": "model.contact.ContactAllData",
+    "additionalData": {
+      "py/object": "model.contact.AdditionalData",
+      "address": "Adres dodatkowy: \nOG N-\n_bek cPfuL-KHOBX  1wt",
+      "phone": "-72760"
+    },
+    "anniversaryDate": {
+      "py/object": "model.contact.AnniversaryDate",
+      "day": 2,
+      "month": 9,
+      "year": "4096"
+    },
+    "birthDate": {
+      "py/object": "model.contact.BirthDate",
+      "day": 22,
+      "month": 10,
+      "year": "9458"
+    },
+    "contactBaseData": {
+      "py/object": "model.contact.ContactBaseData",
+      "additionalphone": null,
+      "address": null,
+      "allEmailsFromHomePage": null,
+      "allPhonesFromHomePage": null,
+      "email1": null,
+      "email2": null,
+      "email3": null,
+      "firstname": "ZE L",
+      "homephone": null,
+      "id": null,
+      "lastname": "wWIG I ",
+      "mobilephone": null,
+      "workphone": null
+    },
+    "emails": {
+      "py/object": "model.contact.Emails",
+      "email1": "NHczRa A FE @S_.yL",
+      "email2": "S@.xm",
+      "email3": "UuLdCXzb @gWQ.hgb"
+    },
+    "notes": {
+      "py/object": "model.contact.Notes",
+      "notes": "n\ni\nMgfg  7 \n-IyP -FV -QFu3r h dkKCfEcg-E 7yC  QlLhd "
+    },
+    "personalData": {
+      "py/object": "model.contact.PersonalData",
+      "address": "Adres podstawowy: tXr -SrHF p 3  W5uc-J X",
+      "company": "pp nU_",
+      "middlename": "suKhq eZ",
+      "nickname": "MZNu",
+      "title": ""
+    },
+    "phoneNumbers": {
+      "py/object": "model.contact.PhoneNumbers",
+      "fax": "2)14 4+6",
+      "home": "5)5-8",
+      "mobile": "",
+      "work": "124399917"
+    },
+    "www": {
+      "py/object": "model.contact.Www",
+      "www": "www.OSAvgPYgUNBKQqKRjYgaHOEWShno.mdR"
+    }
+  },
+  {
+    "py/object": "model.contact.ContactAllData",
+    "additionalData": {
+      "py/object": "model.contact.AdditionalData",
+      "address": "Adres dodatkowy: r1 MrR-ELq bZNJ",
+      "phone": "9090+34"
+    },
+    "anniversaryDate": {
+      "py/object": "model.contact.AnniversaryDate",
+      "day": 9,
+      "month": 6,
+      "year": "5410"
+    },
+    "birthDate": {
+      "py/object": "model.contact.BirthDate",
+      "day": 11,
+      "month": 3,
+      "year": "8929"
+    },
+    "contactBaseData": {
+      "py/object": "model.contact.ContactBaseData",
+      "additionalphone": null,
+      "address": null,
+      "allEmailsFromHomePage": null,
+      "allPhonesFromHomePage": null,
+      "email1": null,
+      "email2": null,
+      "email3": null,
+      "firstname": "wDyb",
+      "homephone": null,
+      "id": null,
+      "lastname": "bHq nsU YQ",
+      "mobilephone": null,
+      "workphone": null
+    },
+    "emails": {
+      "py/object": "model.contact.Emails",
+      "email1": "pR   u AU@-.vm",
+      "email2": "XY pR@BS.QWn",
+      "email3": "rGEyW@cFhVm.stD"
+    },
+    "notes": {
+      "py/object": "model.contact.Notes",
+      "notes": "n-j6 S0UKMKQ8A 9pr ioRjJOGA  z-JaYRXYNh-YI- aSS"
+    },
+    "personalData": {
+      "py/object": "model.contact.PersonalData",
+      "address": "Adres podstawowy: D4 B c  5 N\nQ ",
+      "company": "l r-Cb-m",
+      "middlename": "RqTPbPfn",
+      "nickname": "zU",
+      "title": "csaI"
+    },
+    "phoneNumbers": {
+      "py/object": "model.contact.PhoneNumbers",
+      "fax": "30",
+      "home": "3220-1",
+      "mobile": "7169560(+",
+      "work": ""
+    },
+    "www": {
+      "py/object": "model.contact.Www",
+      "www": "www.iRfmNbKULuDguBn-H.wB"
+    }
+  },
+  {
+    "py/object": "model.contact.ContactAllData",
+    "additionalData": {
+      "py/object": "model.contact.AdditionalData",
+      "address": "Adres dodatkowy: iKK e C-G Qqd q1SkP46a--NZ  W",
+      "phone": "426355"
+    },
+    "anniversaryDate": {
+      "py/object": "model.contact.AnniversaryDate",
+      "day": 19,
+      "month": 5,
+      "year": "0023"
+    },
+    "birthDate": {
+      "py/object": "model.contact.BirthDate",
+      "day": 20,
+      "month": 3,
+      "year": "1927"
+    },
+    "contactBaseData": {
+      "py/object": "model.contact.ContactBaseData",
+      "additionalphone": null,
+      "address": null,
+      "allEmailsFromHomePage": null,
+      "allPhonesFromHomePage": null,
+      "email1": null,
+      "email2": null,
+      "email3": null,
+      "firstname": "_c",
+      "homephone": null,
+      "id": null,
+      "lastname": "F  uH ",
+      "mobilephone": null,
+      "workphone": null
+    },
+    "emails": {
+      "py/object": "model.contact.Emails",
+      "email1": "ZQeGTtQk@ztv-j.RoO",
+      "email2": "Dz@eRoG.rE",
+      "email3": "qJ qgGmA-@DsO .kwG"
+    },
+    "notes": {
+      "py/object": "model.contact.Notes",
+      "notes": "n   ALV"
+    },
+    "personalData": {
+      "py/object": "model.contact.PersonalData",
+      "address": "Adres podstawowy: oG  sFpA3g",
+      "company": "mCpRwOs aVO-UaHz",
+      "middlename": "JD",
+      "nickname": "-WiIPQ",
+      "title": "CU_gc yX"
+    },
+    "phoneNumbers": {
+      "py/object": "model.contact.PhoneNumbers",
+      "fax": "83",
+      "home": "89487812",
+      "mobile": "997",
+      "work": " )362"
+    },
+    "www": {
+      "py/object": "model.contact.Www",
+      "www": "www.pWrGJfxCqnr.xR"
+    }
+  },
+  {
+    "py/object": "model.contact.ContactAllData",
+    "additionalData": {
+      "py/object": "model.contact.AdditionalData",
+      "address": "Adres dodatkowy: A -mInDeoA7HwhVP O \n-iP8",
+      "phone": ""
+    },
+    "anniversaryDate": {
+      "py/object": "model.contact.AnniversaryDate",
+      "day": 22,
+      "month": 10,
+      "year": "4597"
+    },
+    "birthDate": {
+      "py/object": "model.contact.BirthDate",
+      "day": 24,
+      "month": 3,
+      "year": "0224"
+    },
+    "contactBaseData": {
+      "py/object": "model.contact.ContactBaseData",
+      "additionalphone": null,
+      "address": null,
+      "allEmailsFromHomePage": null,
+      "allPhonesFromHomePage": null,
+      "email1": null,
+      "email2": null,
+      "email3": null,
+      "firstname": " Q  ",
+      "homephone": null,
+      "id": null,
+      "lastname": "Quv-Ql-DY-P_",
+      "mobilephone": null,
+      "workphone": null
+    },
+    "emails": {
+      "py/object": "model.contact.Emails",
+      "email1": "nP@Sw  .QsU",
+      "email2": " bTY yp@t J.Jzc",
+      "email3": "P--oUIY_l@s_.zg"
+    },
+    "notes": {
+      "py/object": "model.contact.Notes",
+      "notes": "n K_ uTW\nW wmz  FtX cLa\n5w  l6tHC _P 837tjSnlkM ae1r UZ T KZ_-yWki mhqun_Nxw VTubx4OhS4_Nn"
+    },
+    "personalData": {
+      "py/object": "model.contact.PersonalData",
+      "address": "Adres podstawowy: e  G 5vx_9uY",
+      "company": "CYXaFzSa YmQlQNrm",
+      "middlename": "gt",
+      "nickname": "EZrH",
+      "title": "  uc-U"
+    },
+    "phoneNumbers": {
+      "py/object": "model.contact.PhoneNumbers",
+      "fax": "5",
+      "home": "94( 6",
+      "mobile": "84+284097)2460",
+      "work": "- 3"
+    },
+    "www": {
+      "py/object": "model.contact.Www",
+      "www": "www.lhzLyyTMtKjzcHSMTDH.XX"
+    }
+  },
+  {
+    "py/object": "model.contact.ContactAllData",
+    "additionalData": {
+      "py/object": "model.contact.AdditionalData",
+      "address": "",
+      "phone": ""
+    },
+    "anniversaryDate": {
+      "py/object": "model.contact.AnniversaryDate",
+      "day": -1,
+      "month": 0,
+      "year": ""
+    },
+    "birthDate": {
+      "py/object": "model.contact.BirthDate",
+      "day": -1,
+      "month": 0,
+      "year": ""
+    },
+    "contactBaseData": {
+      "py/object": "model.contact.ContactBaseData",
+      "additionalphone": null,
+      "address": null,
+      "allEmailsFromHomePage": null,
+      "allPhonesFromHomePage": null,
+      "email1": null,
+      "email2": null,
+      "email3": null,
+      "firstname": "",
+      "homephone": null,
+      "id": null,
+      "lastname": "",
+      "mobilephone": null,
+      "workphone": null
+    },
+    "emails": {
+      "py/object": "model.contact.Emails",
+      "email1": "",
+      "email2": "",
+      "email3": ""
+    },
+    "notes": {
+      "py/object": "model.contact.Notes",
+      "notes": ""
+    },
+    "personalData": {
+      "py/object": "model.contact.PersonalData",
+      "address": "",
+      "company": "",
+      "middlename": "",
+      "nickname": "",
+      "title": ""
+    },
+    "phoneNumbers": {
+      "py/object": "model.contact.PhoneNumbers",
+      "fax": "",
+      "home": "",
+      "mobile": "",
+      "work": ""
+    },
+    "www": {
+      "py/object": "model.contact.Www",
+      "www": ""
+    }
+  },
+  {
+    "py/object": "model.contact.ContactAllData",
+    "additionalData": {
+      "py/object": "model.contact.AdditionalData",
+      "address": "",
+      "phone": ""
+    },
+    "anniversaryDate": {
+      "py/object": "model.contact.AnniversaryDate",
+      "day": 1,
+      "month": 1,
+      "year": "2010"
+    },
+    "birthDate": {
+      "py/object": "model.contact.BirthDate",
+      "day": 31,
+      "month": 12,
+      "year": "1999"
+    },
+    "contactBaseData": {
+      "py/object": "model.contact.ContactBaseData",
+      "additionalphone": null,
+      "address": null,
+      "allEmailsFromHomePage": null,
+      "allPhonesFromHomePage": null,
+      "email1": null,
+      "email2": null,
+      "email3": null,
+      "firstname": "u -",
+      "homephone": null,
+      "id": null,
+      "lastname": "rl_Oe-RIc xg Su",
+      "mobilephone": null,
+      "workphone": null
+    },
+    "emails": {
+      "py/object": "model.contact.Emails",
+      "email1": "",
+      "email2": "",
+      "email3": ""
+    },
+    "notes": {
+      "py/object": "model.contact.Notes",
+      "notes": "n-d uC- G9\n y- jRyp--0lCkpxJh\nksF2g-WE LLW-LP N\nR\nNcrng7ly3xSmd6d \n  x 2u0 2mq"
+    },
+    "personalData": {
+      "py/object": "model.contact.PersonalData",
+      "address": "",
+      "company": "OSd_ ",
+      "middlename": "Dq_",
+      "nickname": "-gCc",
+      "title": "BPm"
+    },
+    "phoneNumbers": {
+      "py/object": "model.contact.PhoneNumbers",
+      "fax": "",
+      "home": "",
+      "mobile": "",
+      "work": ""
+    },
+    "www": {
+      "py/object": "model.contact.Www",
+      "www": ""
+    }
+  },
+  {
+    "py/object": "model.contact.ContactAllData",
+    "additionalData": {
+      "py/object": "model.contact.AdditionalData",
+      "address": "",
+      "phone": ""
+    },
+    "anniversaryDate": {
+      "py/object": "model.contact.AnniversaryDate",
+      "day": -1,
+      "month": 0,
+      "year": ""
+    },
+    "birthDate": {
+      "py/object": "model.contact.BirthDate",
+      "day": -1,
+      "month": 0,
+      "year": ""
+    },
+    "contactBaseData": {
+      "py/object": "model.contact.ContactBaseData",
+      "additionalphone": null,
+      "address": null,
+      "allEmailsFromHomePage": null,
+      "allPhonesFromHomePage": null,
+      "email1": null,
+      "email2": null,
+      "email3": null,
+      "firstname": " a ",
+      "homephone": null,
+      "id": null,
+      "lastname": " b ",
+      "mobilephone": null,
+      "workphone": null
+    },
+    "emails": {
+      "py/object": "model.contact.Emails",
+      "email1": "",
+      "email2": "",
+      "email3": ""
+    },
+    "notes": {
+      "py/object": "model.contact.Notes",
+      "notes": ""
+    },
+    "personalData": {
+      "py/object": "model.contact.PersonalData",
+      "address": "",
+      "company": "",
+      "middlename": "",
+      "nickname": "",
+      "title": ""
+    },
+    "phoneNumbers": {
+      "py/object": "model.contact.PhoneNumbers",
+      "fax": "",
+      "home": "",
+      "mobile": "",
+      "work": ""
+    },
+    "www": {
+      "py/object": "model.contact.Www",
+      "www": ""
+    }
+  },
+  {
+    "py/object": "model.contact.ContactAllData",
+    "additionalData": {
+      "py/object": "model.contact.AdditionalData",
+      "address": "",
+      "phone": ""
+    },
+    "anniversaryDate": {
+      "py/object": "model.contact.AnniversaryDate",
+      "day": -1,
+      "month": 0,
+      "year": ""
+    },
+    "birthDate": {
+      "py/object": "model.contact.BirthDate",
+      "day": -1,
+      "month": 0,
+      "year": ""
+    },
+    "contactBaseData": {
+      "py/object": "model.contact.ContactBaseData",
+      "additionalphone": null,
+      "address": null,
+      "allEmailsFromHomePage": null,
+      "allPhonesFromHomePage": null,
+      "email1": null,
+      "email2": null,
+      "email3": null,
+      "firstname": "a  b",
+      "homephone": null,
+      "id": null,
+      "lastname": "c  d",
+      "mobilephone": null,
+      "workphone": null
+    },
+    "emails": {
+      "py/object": "model.contact.Emails",
+      "email1": "",
+      "email2": "",
+      "email3": ""
+    },
+    "notes": {
+      "py/object": "model.contact.Notes",
+      "notes": ""
+    },
+    "personalData": {
+      "py/object": "model.contact.PersonalData",
+      "address": "",
+      "company": "",
+      "middlename": "",
+      "nickname": "",
+      "title": ""
+    },
+    "phoneNumbers": {
+      "py/object": "model.contact.PhoneNumbers",
+      "fax": "",
+      "home": "",
+      "mobile": "",
+      "work": ""
+    },
+    "www": {
+      "py/object": "model.contact.Www",
+      "www": ""
+    }
+  }
+]

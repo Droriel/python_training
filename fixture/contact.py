@@ -43,6 +43,19 @@ class  ContactHelper:
         # Fill in year
         self.app.change_field_value("ayear", anniversaryDate.year)
 
+    def update_anniversary_date(self, anniversaryDate):
+        wd = self.app.wd
+        # Choose in day
+        if not wd.find_element_by_xpath(
+                            "//div[@id='content']/form/select[3]//option[%s]" % str(anniversaryDate.day + 2)).is_selected():
+                wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[%s]" % str(anniversaryDate.day + 2)).click()
+        # Choose in month
+        if not wd.find_element_by_xpath(
+                            "//div[@id='content']/form/select[4]//option[%s]" % str(anniversaryDate.month + 2)).is_selected():
+                wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[%s]" % str(anniversaryDate.month + 2)).click()
+        # Fill in year
+        self.app.change_field_value("ayear", anniversaryDate.year)
+
     def fill_birth_date(self, birthDate):
         wd = self.app.wd
         # Choose in day
@@ -53,6 +66,19 @@ class  ContactHelper:
         if not wd.find_element_by_xpath(
                             "//div[@id='content']/form/select[2]//option[%s]" % str(birthDate.month + 1)).is_selected():
                 wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[%s]" % str(birthDate.month + 1)).click()
+        # Fill in year
+        self.app.change_field_value("byear", birthDate.year)
+
+    def update_birth_date(self, birthDate):
+        wd = self.app.wd
+        # Choose in day
+        if not wd.find_element_by_xpath(
+                            "//div[@id='content']/form/select[1]//option[%s]" % str(birthDate.day + 2)).is_selected():
+                wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[%s]" % str(birthDate.day + 2)).click()
+        # Choose in month
+        if not wd.find_element_by_xpath(
+                            "//div[@id='content']/form/select[2]//option[%s]" % str(birthDate.month + 2)).is_selected():
+                wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[%s]" % str(birthDate.month + 2)).click()
         # Fill in year
         self.app.change_field_value("byear", birthDate.year)
 

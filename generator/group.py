@@ -24,15 +24,20 @@ for o, a in opts:
 # opcje wpisujemy w opcje skryptu "-n 10 -f data/test,json"
 
 def random_string(prefix, maxlen):
-    symbols = string.ascii_letters + string.digits + string.punctuation + ' '*10
+    # symbols = string.ascii_letters + string.digits + string.punctuation + ' '*10
+    symbols = string.ascii_letters + string.digits + ' ' * 15 + '\n' * 5 + '-' * 3 + '_' * 3
     return prefix + ''.join([random.choice(symbols) for i in range(random.randrange(maxlen))])
+
 
 testData = [Group(name='', header='', footer='')] + \
 [
-    Group(name=random_string("Nazwa", 10), header=random_string("Nagłówek", 20), footer=random_string("Stopka", 20))
+        Group(name=random_string("Nazwa", 10), header=random_string("Nagłówek", 20), footer=random_string("Stopka", 20))
     for i in range(n)
 
-]
+] + \
+        [Group(name=random_string("Nazwa", 10), header='', footer='')] + \
+        [Group(name='', header=random_string("Nagłówek", 20), footer='')] + \
+        [Group(name='', header='', footer=random_string("Stopka", 20))]
 # random na kombinacjach pola pustego i niepustego
 # testData = [
 #     Group(name=name, header=header, footer=footer)
