@@ -4,3 +4,6 @@ from re import sub
 
 def clear_multiple_spaces(s):
     return sub("\s+",' ',s)
+
+
+
