@@ -31,12 +31,12 @@ def random_string(prefix, maxlen):
 
 testData = [Group(name='', header='', footer='')] + \
 [
-        Group(name=random_string("Nazwa", 10), header=random_string("Nagłówek", 20), footer=random_string("Stopka", 20))
+        Group(name=random_string("Nazwa", 10), header=random_string("Naglowek", 20), footer=random_string("Stopka", 20))
     for i in range(n)
 
 ] + \
         [Group(name=random_string("Nazwa", 10), header='', footer='')] + \
-        [Group(name='', header=random_string("Nagłówek", 20), footer='')] + \
+        [Group(name='', header=random_string("Naglowek", 20), footer='')] + \
         [Group(name='', header='', footer=random_string("Stopka", 20))]
 # random na kombinacjach pola pustego i niepustego
 # testData = [

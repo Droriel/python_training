@@ -53,6 +53,20 @@ class GroupHelper:
         self.return_to_groups_page()
         self.group_cache = None
 
+    def delete_group_by_id(self, id, delete_button):
+        wd = self.app.wd
+        self.open_groups_page()
+        self.select_group_by_id(id)
+        # submit deletion
+        if delete_button == 'top':
+            wd.find_element_by_xpath("(//input[@name='delete'])[1]").click()
+        elif delete_button == 'bottom':
+            wd.find_element_by_xpath("(//input[@name='delete'])[2]").click()
+        else:
+            print("Improper parameter for delete button value")
+        self.return_to_groups_page()
+        self.group_cache = None
+
     def select_first_group(self):
         wd = self.app.wd
         self.select_group_by_index(0)
@@ -60,6 +74,10 @@ class GroupHelper:
     def select_group_by_index(self, index):
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
+
+    def select_group_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("input[value='%s']"%id).click()
 
     def edit_first_group(self, new_group_data, edit_button):
         wd = self.app.wd
@@ -69,6 +87,24 @@ class GroupHelper:
         wd = self.app.wd
         self.open_groups_page()
         self.select_group_by_index(index)
+        # Init first group_edition
+        if edit_button == 'top':
+            wd.find_element_by_xpath("(//input[@name='edit'])[1]").click()
+        elif edit_button == 'bottom':
+            wd.find_element_by_xpath("(//input[@name='edit'])[2]").click()
+        else:
+            print("Improper parameter for edit button value")
+        # Change group form
+        self.fill_group_form(new_group_data)
+        # Submit group edition
+        wd.find_element_by_name("update").click()
+        self.return_to_groups_page()
+        self.group_cache = None
+
+    def edit_group_by_id(self, id, new_group_data, edit_button):
+        wd = self.app.wd
+        self.open_groups_page()
+        self.select_group_by_id(id)
         # Init first group_edition
         if edit_button == 'top':
             wd.find_element_by_xpath("(//input[@name='edit'])[1]").click()

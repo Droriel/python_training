@@ -17,8 +17,12 @@ class Group:
     # def __eq__(self, other):
     #         return (self.id == other.id or self.id is None or other.id is None) and self.name == adjustments.clear_multiple_spaces(other.name).strip()
 
+    # def __eq__(self, other):
+    #         return (self.id == other.id or self.id is None or other.id is None) and self.name == adjustments.clear_multiple_spaces(other.name)
+
     def __eq__(self, other):
-            return (self.id == other.id or self.id is None or other.id is None) and self.name == adjustments.clear_multiple_spaces(other.name)
+        return (
+               self.id == other.id or self.id is None or other.id is None) and self.name == other.name
 
     def id_or_max(self):
         if self.id:
