@@ -3,7 +3,7 @@ import pymysql.cursors
 # import mysql.connector
 
 from model.group import Group
-from model.contact import ContactAllData, ContactBaseData
+from model.contact import ContactAllData, ContactBaseData, PhoneNumbers
 
 
 class DbFixture:
@@ -35,11 +35,14 @@ class DbFixture:
         cursor = self.connection.cursor()
         # sprawdzić czy można zamiast poniższego użyć kontrukcji with
         try:
-            cursor.execute('select id, firstname, lastname, address, home from addressbook where deprecated="0000-00-00 00:00:00"')
+            cursor.execute('select id, firstname, lastname, address, home, mobile, work, phone2, email, email2, email3 from addressbook where deprecated="0000-00-00 00:00:00"')
             for row in cursor:
-                (id, firstname, lastname, address, homephone) = row
-                contactBaseData = ContactBaseData(id=str(id), firstname=firstname, lastname=lastname, address=address, homephone=homephone)
-                list.append(ContactAllData(contactBaseData=contactBaseData, personalData='', phoneNumbers='',emails='',www='', additionalData='', notes='', birthDate='', anniversaryDate=''))
+                (id, firstname, lastname, address, homephone, mobilephone, workphone, additionalphone, email1, email2, email3) = row
+                contactBaseData = ContactBaseData(id=str(id), firstname=firstname, lastname=lastname, address=address,
+                                                  homephone=homephone, mobilephone=mobilephone, workphone=workphone, additionalphone=additionalphone,
+                                                  email1=email1, email2=email2, email3=email3)
+                list.append(ContactAllData(contactBaseData=contactBaseData, personalData='', phoneNumbers='',
+                                           emails='',www='', additionalData='', notes='', birthDate='', anniversaryDate=''))
         finally:
             cursor.close()
         return list

@@ -37,7 +37,7 @@ def random_string_with_new_line(prefix, maxlen):
 
 
 def random_email(maxlen):
-    symbols = string.ascii_letters + ' ' * 10 + '-' * 3 + '_' * 3
+    symbols = string.ascii_letters + '-' * 3 + '_' * 3
     return ''.join([random.choice(symbols) for i in range(random.randrange(maxlen+5))]) + '@' +\
            ''.join([random.choice(symbols) for i in range(random.randrange(maxlen))]) + '.' +\
            ''.join([random.choice(string.ascii_letters) for i in range(random.randrange(2,4))])
