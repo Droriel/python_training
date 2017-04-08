@@ -3,6 +3,7 @@ import pymysql.cursors
 # import mysql.connector
 
 from model.group import Group
+from model.contact import ContactAllData, ContactBaseData
 
 
 class DbFixture:
@@ -34,16 +35,14 @@ class DbFixture:
         cursor = self.connection.cursor()
         # sprawdzić czy można zamiast poniższego użyć kontrukcji with
         try:
-            cursor.execute('select group_id, group_name, group_header, group_footer from group_list')
+            cursor.execute('select id, firstname, lastname, address, home from addressbook where deprecated="0000-00-00 00:00:00"')
             for row in cursor:
-                (id, name, header, footer) = row
-                list.append(Group(id=str(id), name=name, header=header, footer=footer))
+                (id, firstname, lastname, address, homephone) = row
+                contactBaseData = ContactBaseData(id=str(id), firstname=firstname, lastname=lastname, address=address, homephone=homephone)
+                list.append(ContactAllData(contactBaseData=contactBaseData, personalData='', phoneNumbers='',emails='',www='', additionalData='', notes='', birthDate='', anniversaryDate=''))
         finally:
             cursor.close()
         return list
-
-    def get_contact_list(self):
-        pass
 
     def destroy(self):
         self.connection.close()

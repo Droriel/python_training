@@ -1,32 +1,52 @@
 # -*- coding: utf-8 -*-
-from random import randrange
-from model.contact import PersonalData
+import random
+from model.contact import PersonalData, ContactBaseData
+from test_addons import adjustments
 
 
-def test_del_contact_from_the_list(app):
+def test_del_contact_from_the_list(app, db, check_ui):
     if app.contact.count() == 0:
         app.contact.init_new_contact()
         app.contact.fill_personal_data(PersonalData(firstname="test"))
         app.contact.submit_contact()
-    old_contacts = app.contact.get_contact_list()
-    index = randrange(len(old_contacts))
-    app.contact.delete_contact_by_index(index)
-    assert len(old_contacts) - 1 == app.contact.count()
-    new_contacts = app.contact.get_contact_list()
-    old_contacts[index:index+1] = []
+    old_contacts = db.get_contact_list()
+    contact_to_delete = random.choice(old_contacts)
+    app.contact.delete_contact_by_id(contact_to_delete.contactBaseData.id)
+    app.contact.open_main_page()
+    new_contacts = db.get_contact_list()
+    assert len(old_contacts) - 1 == len(new_contacts)
+    old_contacts.remove(contact_to_delete)
     assert new_contacts == old_contacts
+    if check_ui:
+
+        def clean(contact):
+            return ContactBaseData(id=contact.contactBaseData.id,
+                                   firstname=adjustments.clear_multiple_spaces(contact.contactBaseData.firstname).strip(),
+                                   lastname=adjustments.clear_multiple_spaces(contact.contactBaseData.lastname).strip())
+        clear_new_contacts = map(clean, new_contacts)
+        assert sorted(clear_new_contacts, key=ContactBaseData.id_or_max) == sorted(app.contact.get_contact_list(),
+                                                                                   key=ContactBaseData.id_or_max)
 
 
-def test_del_edited_contact(app):
+def test_del_edited_contact(app, db, check_ui):
     if app.contact.count() == 0:
         app.contact.init_new_contact()
         app.contact.fill_personal_data(PersonalData(firstname="test"))
         app.contact.submit_contact()
-    old_contacts = app.contact.get_contact_list()
-    index = randrange(len(old_contacts))
-    app.contact.init_by_index_contact_edition(index)
+    old_contacts = db.get_contact_list()
+    contact_to_delete = random.choice(old_contacts)
+    app.contact.init_by_id_contact_edition(contact_to_delete.contactBaseData.id)
     app.contact.delete_edited_contact()
-    assert len(old_contacts) - 1 == app.contact.count()
-    new_contacts = app.contact.get_contact_list()
-    old_contacts[index:index+1] = []
+    new_contacts = db.get_contact_list()
+    assert len(old_contacts) - 1 == len(new_contacts)
+    old_contacts.remove(contact_to_delete)
     assert new_contacts == old_contacts
+    if check_ui:
+
+        def clean(contact):
+            return ContactBaseData(id=contact.contactBaseData.id,
+                                   firstname=adjustments.clear_multiple_spaces(contact.contactBaseData.firstname).strip(),
+                                   lastname=adjustments.clear_multiple_spaces(contact.contactBaseData.lastname).strip())
+        clear_new_contacts = map(clean, new_contacts)
+        assert sorted(clear_new_contacts, key=ContactBaseData.id_or_max) == sorted(app.contact.get_contact_list(),
+                                                                                   key=ContactBaseData.id_or_max)

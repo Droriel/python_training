@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from model.contact import ContactBaseData
+from model.contact import ContactBaseData, ContactAllData
+from test_addons import adjustments
 
 
-def test_add_contact(app, db, json_contacts):
+def test_add_contact(app, db, json_contacts, check_ui):
     old_contacts = db.get_contact_list()
     app.contact.init_new_contact()
     contact= json_contacts
@@ -17,8 +18,19 @@ def test_add_contact(app, db, json_contacts):
     app.contact.fill_additional_data(contact.additionalData)
     app.contact.fill_notes(contact.notes)
     app.contact.submit_contact()
-    assert len(old_contacts) + 1 == app.contact.count()
-    new_contacts = app.contact.get_contact_list()
-    old_contacts.append(json_contacts.contactBaseData)
-    assert sorted(new_contacts, key=ContactBaseData.id_or_max) == sorted(old_contacts, key=ContactBaseData.id_or_max)
+    new_contacts = db.get_contact_list()
+    assert len(old_contacts) + 1 == len(new_contacts)
+    # app.contact.get_contact_list()
+    # old_contacts.append(json_contacts.contactBaseData)
+    old_contacts.append(contact)
+    assert new_contacts == old_contacts
+    # assert sorted(new_contacts, key=ContactBaseData.id_or_max) == sorted(old_contacts, key=ContactBaseData.id_or_max)
+    if check_ui:
+
+        def clean(contact):
+            return ContactBaseData(id=contact.contactBaseData.id,
+                                   firstname=adjustments.clear_multiple_spaces(contact.contactBaseData.firstname).strip(),
+                                   lastname=adjustments.clear_multiple_spaces(contact.contactBaseData.lastname).strip())
+        clear_new_contacts = map(clean, new_contacts)
+        assert sorted(clear_new_contacts, key=ContactBaseData.id_or_max) == sorted(app.contact.get_contact_list(), key=ContactBaseData.id_or_max)
 

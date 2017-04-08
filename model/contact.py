@@ -22,8 +22,8 @@ class ContactAllData:
     # def __repr__(self):
     #     return '%s: %s %s' % (self.ContactBaseData.id, self.ContactBaseData.lastname, self.ContactBaseData.firstname)
     #
-    # def __eq__(self, other):
-    #     return (self.ContactBaseData == other.ContactBaseData)
+    def __eq__(self, other):
+        return (self.contactBaseData == other.contactBaseData)
 
 
 class ContactBaseData:
@@ -49,10 +49,15 @@ class ContactBaseData:
     def __repr__(self):
         return '%s: %s %s' % (self.id, self.lastname, self.firstname)
 
+    # def __eq__(self, other):
+    #     return (self.id == other.id or self.id is None or other.id is None) \
+    #            and adjustments.clear_multiple_spaces(self.lastname).strip() == adjustments.clear_multiple_spaces(other.lastname).strip() \
+    #            and adjustments.clear_multiple_spaces(self.firstname).strip() == adjustments.clear_multiple_spaces(other.firstname).strip()
+
     def __eq__(self, other):
         return (self.id == other.id or self.id is None or other.id is None) \
-               and adjustments.clear_multiple_spaces(self.lastname).strip() == adjustments.clear_multiple_spaces(other.lastname).strip() \
-               and adjustments.clear_multiple_spaces(self.firstname).strip() == adjustments.clear_multiple_spaces(other.firstname).strip()
+               and self.lastname == other.lastname \
+               and self.firstname == other.firstname
 
     def id_or_max(self):
         if self.id:

@@ -141,6 +141,17 @@ class  ContactHelper:
         wd.switch_to_alert().accept()
         self.contact_cache = None
 
+    def delete_contact_by_id(self, contact_id):
+        wd = self.app.wd
+        self.open_main_page()
+        # Choose first contact
+        wd.find_element_by_xpath("//input[@id='%s']" % contact_id).click()
+        # Submit contact deletation
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        # closing alert window
+        wd.switch_to_alert().accept()
+        self.contact_cache = None
+
     def delete_all_contacts(self):
         wd = self.app.wd
         self.open_main_page()
@@ -161,6 +172,11 @@ class  ContactHelper:
         wd = self.app.wd
         self.open_main_page()
         wd.find_elements_by_xpath("//img[@title='Edytuj']")[index].click()
+
+    def init_by_id_contact_edition(self, contact_id):
+        wd = self.app.wd
+        self.open_main_page()
+        wd.find_element_by_xpath("//a[contains(@href,'edit.php?id=%s')]/img" % contact_id).click()
 
     def open_contact_view_by_index(self, index):
         wd = self.app.wd
