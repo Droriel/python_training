@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 from model.contact import ContactBaseData
 import re
 
@@ -126,6 +129,10 @@ class  ContactHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("nowy wpis").click()
 
+    def choose_by_id_contact(self, contact_id):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//input[@id='%s']" % contact_id).click()
+
     def delete_first_contact(self):
         wd = self.app.wd
         self.delete_contact_by_index(0)
@@ -144,8 +151,7 @@ class  ContactHelper:
     def delete_contact_by_id(self, contact_id):
         wd = self.app.wd
         self.open_main_page()
-        # Choose first contact
-        wd.find_element_by_xpath("//input[@id='%s']" % contact_id).click()
+        self.choose_by_id_contact(contact_id)
         # Submit contact deletation
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         # closing alert window
@@ -197,6 +203,30 @@ class  ContactHelper:
         wd = self.app.wd
         wd.find_element_by_xpath("//input[@value='Usuń']").click()
         self.contact_cache = None
+
+    def add_contact_to_group(self, contact_id, group_id):
+        wd = self.app.wd
+        self.open_main_page()
+        # choosing contact
+        self.choose_by_id_contact(contact_id)
+        # choosing group from dropdown for adding
+        # wd.find_element_by_xpath("//select[@name='to_group']").click()
+        wd.find_element_by_xpath("//select[@name='to_group']/option[@value='%s']" % group_id).click()
+        # Submit
+        wd.find_element_by_xpath("//input[@name='add']").click()
+
+    def delete_contact_from_group(self, contact_id, group_id):
+        wd = self.app.wd
+        self.open_main_page()
+        # group choosing from dropdown for viewing contacts in group
+        wd.find_element_by_xpath("//select[@name='group']/option[@value='%s']" % group_id).click()
+        # waiting for the refresh of content
+        wait = WebDriverWait(wd, 10)
+        wait.until(lambda d: d.find_element_by_xpath("//input[@name='remove']"))
+        # choosing contact
+        self.choose_by_id_contact(contact_id)
+        # Submit
+        wd.find_element_by_xpath("//input[@name='remove']").click()
 
     # counting elements on the list
     def count(self):
